@@ -24,11 +24,11 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <img src="{{ asset('img/logo.png') }}" width="25" height="25" class="mr-2 rounded-circle d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
             <a class="navbar-brand mr-auto mr-lg-0" href="#">{{ config('app.name', 'Laravel') }}</a>
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     &nbsp;
                 </ul>

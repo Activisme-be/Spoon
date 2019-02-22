@@ -11759,7 +11759,6 @@ html {
 }
 
 .footer {
-  margin-top: 1rem !important;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -11772,37 +11771,21 @@ html {
   color: #fff;
 }
 
-html,
-body {
-  overflow-x: hidden;
-  /* Prevent scroll on narrow devices */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #343a40;
+}
+
+.copyright {
+  color: #fff;
 }
 
 body {
   margin-bottom: 60px;
-}
-
-@media (max-width: 991.98px) {
-  .offcanvas-collapse {
-    position: fixed;
-    top: 56px;
-    /* Height of navbar */
-    bottom: 0;
-    left: 100%;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    visibility: hidden;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.3s;
-    transition-property: left, visibility;
-  }
-
-  .offcanvas-collapse.open {
-    left: 0;
-    visibility: visible;
-  }
 }
 
 .nav-scroller {
