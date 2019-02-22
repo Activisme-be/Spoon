@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
+/**
+ * Class HomeController
+ * ---- 
+ * Controllers that handles the application home pages. 
+ * 
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -15,6 +22,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware(['auth'])->only(['index']);
+        $this->middleware(['guest'])->only(['welcome']);
     }
 
     /**
