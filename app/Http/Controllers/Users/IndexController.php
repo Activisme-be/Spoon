@@ -21,7 +21,7 @@ class IndexController extends Controller
      */
     public function __construct() 
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth', 'role:admin']);
     }
 
     /**
@@ -43,6 +43,8 @@ class IndexController extends Controller
 
     /**
      * Method for displaying the create view for an new user. 
+     *
+     * @todo Create view
      *
      * @return Renderable
      */

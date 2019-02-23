@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User 
@@ -16,7 +17,7 @@ use Cog\Laravel\Ban\Traits\Bannable;
  */
 class User extends Authenticatable implements BannableContract
 {
-    use Notifiable, Bannable;
+    use Notifiable, Bannable, HasRoles;
 
     /**
      * The attributes that are mass assignable.

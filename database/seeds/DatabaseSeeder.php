@@ -16,6 +16,8 @@ class DatabaseSeeder extends BaseDatabaseSeeder
     public function run(): void
     {
         parent::run();
+
+        $this->call(RoleTableSeeder::class);
         $this->call(UserTableSeeder::class);
     }
 }
