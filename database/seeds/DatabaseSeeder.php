@@ -1,16 +1,21 @@
 <?php
 
-use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+use Spatie\Seeders\DatabaseSeeder as BaseDatabaseSeeder;
+
+/**
+ * Class DatabaseSeeder
+ */
+class DatabaseSeeder extends BaseDatabaseSeeder
 {
     /**
      * Seed the application's database.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // $this->call(UsersTableSeeder::class);
+        parent::run();
+        $this->call(UserTableSeeder::class);
     }
 }

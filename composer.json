@@ -12,7 +12,8 @@
         "cybercog/laravel-ban": "^3.5",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/seeders": "^5.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -34,6 +35,12 @@
             "dont-discover": []
         }
     },
+    "repositories": [ 
+        {
+            "type": "composer", 
+            "url": "https://satis.spatie.be/" 
+        } 
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/"
