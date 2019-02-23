@@ -36,13 +36,13 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="">
-                            <i class="fe fe-bell mr-1"></i>0
+                            <i class="fe fe-bell mr-1"></i> 0
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ auth()->user()->name }}
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ $currentUser->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
@@ -52,17 +52,17 @@
                             <a class="dropdown-item" href="">
                                 <i class="fe fe-alert-octagon mr-1 text-secondary"></i> Probleem melden
                             </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fe text-danger mr-1 fe-power"></i> Afmelden
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf {{-- Form field protection --}}
+                            </form>
                         </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fe text-danger fe-power"></i>
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf {{-- Form field protection --}}
-                        </form>
                     </li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                     <i class="fe fe-home mr-1 text-secondary"></i> Dashboard
                 </a>
 
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fe fe-users mr-1 text-secondary"></i> Gebruikers
                 </a>
             </nav>

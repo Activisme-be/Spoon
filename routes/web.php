@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Users\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,9 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes(['register' => false]);
  
+// Home routes
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+
+// User routes
+Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');

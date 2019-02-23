@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Composers\LayoutComposer;
 use Laravel\Telescope\TelescopeServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', LayoutComposer::class);
     }
 
     /**
