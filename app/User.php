@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,7 +23,7 @@ class User extends Authenticatable implements BannableContract
      *
      * @var array
      */
-    protected $fillable = ['voornaam', 'achternaam', 'email', 'password'];
+    protected $fillable = ['voornaam', 'achternaam', 'email', 'password', 'last_login_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -30,6 +31,24 @@ class User extends Authenticatable implements BannableContract
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'banned_at', 'updated_at', 'last_login_at'];
+
+
+    /**
+     * Method for tracking if the user or not. 
+     * 
+     * @return bool
+     */
+    public function isOnline(): bool 
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
 
     /**
      * Get the user's name.

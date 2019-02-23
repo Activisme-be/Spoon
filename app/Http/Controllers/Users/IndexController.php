@@ -34,10 +34,20 @@ class IndexController extends Controller
     public function index(Request $request, User $users): Renderable 
     {
         switch ($request->filter) {
-            case 'actief':        break; // TODO: Fill in the query scope.
-            case 'gedeactiveerd': break; // TODO: Fill in the query scope.
+            case 'actief':        $users = $users->withoutBanned(); break;
+            case 'gedeactiveerd': $users = $users->onlyBanned();    break;
         }
 
         return view('users.index', ['users' => $users->paginate()]);
+    }
+
+    /**
+     * Method for displaying the create view for an new user. 
+     *
+     * @return Renderable
+     */
+    public function create(): Renderable 
+    {
+        return view('users.create');
     }
 }

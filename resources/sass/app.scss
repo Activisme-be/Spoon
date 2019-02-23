@@ -17,6 +17,12 @@
   background-color: #f8f9fa;
 }
 
+a.disabled,
+a:disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
 .dropdown-item:first-child {
   border-top-left-radius: 0;
   border-top-right-radius: 0;

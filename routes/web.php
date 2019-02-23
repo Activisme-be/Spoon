@@ -21,4 +21,5 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // User routes
+Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
 Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');

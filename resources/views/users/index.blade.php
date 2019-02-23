@@ -7,7 +7,7 @@
             <div class="page-subtitle">beheerspaneel</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn btn-secondary mr-2">
+                <a href="{{ route('users.create') }}" class="btn btn-secondary mr-2">
                     <i class="fe fe-user-plus"></i>
                 </a>
 
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid pb-3">
         <div class="card card-body">
             <div class="table-responsive">
                 <table class="table table-sm mb-0">
@@ -51,16 +51,35 @@
                                 <td>{{ $user->name }}</td>
                                 
                                 <td> {{-- Status  indicator --}}
+                                    @if ($user->isBanned()) {{-- The login is non active in the application --}}
+                                        <span class="badge badge-warning"><i class="fe fe-lock mr-1"></i> non-actief</span>
+                                    @else {{-- The user is active in the application --}}
+                                        @if ($user->isOnline())
+                                            <span class="badge badge-success">Online</span>
+                                        @else
+                                            <span class="badge badge-danger">Offline</span> 
+                                        @endif
+                                    @endif
                                 </td> {{-- // End status indicator --}}
 
                                 <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
-                                <td></td>
+                                <td>{{ $user->last_login_at ? $user->last_login_at->diffForHumans() : '-' }}</td>
 
                                 <td> {{-- Options --}}
                                     <span class="float-right">
                                         <a href="" class="mr-1 text-decoration-none text-secondary">
                                             <i class="fe fe-eye"></i>
                                         </a>
+
+                                        @if ($user->isNotBanned()) {{-- The user is actually locked --}}
+                                            <a href="" class="text-decoration-none mr-1 text-danger @if (! $currentUser->can('deactivate-user', $user)) disabled @endif">
+                                                <i class="fe fe-lock"></i>
+                                            </a>
+                                        @else {{-- The user is locked in the application --}} 
+                                            <a href="mr-1 text-decoration-none text-success">
+                                                <i class="fe fe-unlock"></i>
+                                            </a>
+                                        @endif {{-- /// END lock check --}}                    
 
                                         <a href="" class="mr-1 text-decoration-none text-danger">
                                             <i class="fe fe-trash-2"></i>
