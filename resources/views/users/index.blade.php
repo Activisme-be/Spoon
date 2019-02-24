@@ -67,7 +67,7 @@
 
                                 <td> {{-- Options --}}
                                     <span class="float-right">
-                                        <a href="" class="mr-1 text-decoration-none text-secondary">
+                                        <a href="{{ route('users.show', $user) }}" class="mr-1 text-decoration-none text-secondary">
                                             <i class="fe fe-eye"></i>
                                         </a>
 

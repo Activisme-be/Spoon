@@ -18,12 +18,24 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  User  $user
-     * @param  User  $model
-     * @return mixed
+     * @param  User  $user  Entity of the authenticated user. 
+     * @param  User  $model Entity of the given user. 
+     * @return bool
      */
     public function deactivateUser(User $user, User $model): bool
     {
         return $user->id !== $model->id;
+    }
+
+    /**
+     * Determine whether the authenticated user can edit the given user or not. 
+     * 
+     * @param  User $user   Entity of the authenticated user. 
+     * @param  User $model  Entity of the given user.
+     * @return bool
+     */
+    public function canEdit(User $user, User $model): bool 
+    {
+        return $user->is($model);
     }
 }

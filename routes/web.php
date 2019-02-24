@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // User routes
+Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
+Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('users.update');
 Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
 Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
 Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');

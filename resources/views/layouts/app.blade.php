@@ -75,9 +75,11 @@
                     <i class="fe fe-home mr-1 text-secondary"></i> Dashboard
                 </a>
 
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fe fe-users mr-1 text-secondary"></i> Gebruikers
-                </a>
+                @if ($currentUser->hasRole('admin'))
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fe fe-users mr-1 text-secondary"></i> Gebruikers
+                    </a>
+                @endif
             </nav>
         </div>
 
