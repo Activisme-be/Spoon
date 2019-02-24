@@ -8,7 +8,7 @@
             <i class="fe fe-info text-secondary mr-1"></i> Algemene informatie
         </a>
 
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('user.activity', $user) }}" class="list-group-item list-group-item-action">
             <i class="fe fe-activity mr-1 text-secondary"></i> Activiteiten
         </a>
     </div>

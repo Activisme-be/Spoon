@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Users\IndexController;
 
 /*
@@ -19,6 +20,9 @@ Auth::routes(['register' => false]);
 // Home routes
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Activity routes 
+Route::get('{user}/logs', [ActivityController::class, 'show'])->name('user.activity');
 
 // User routes
 Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
