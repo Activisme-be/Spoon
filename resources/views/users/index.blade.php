@@ -72,7 +72,7 @@
                                         </a>
 
                                         @if ($user->isNotBanned()) {{-- The user is actually locked --}}
-                                            <a href="" class="text-decoration-none mr-1 text-danger @if (! $currentUser->can('deactivate-user', $user)) disabled @endif">
+                                            <a href="{{ route('users.lock', $user) }}" class="text-decoration-none mr-1 text-danger @if ($currentUser->cannot('deactivate-user', $user)) disabled @endif">
                                                 <i class="fe fe-lock"></i>
                                             </a>
                                         @else {{-- The user is locked in the application --}} 
