@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid pb-3">
-    	<form method="POST" action="" class="card card-body">
+    	<form method="POST" action="{{ route('users.store') }}" class="card card-body">
     		@csrf {{-- Form field protection --}}
 
     		<h6 class="border-bottom border-gray pb-1 mb-3">Nieuwe gebruiker toevoegen</h6>

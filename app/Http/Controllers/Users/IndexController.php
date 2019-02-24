@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Users;
 
 use App\User;
+use App\Notifications\LoginCreated;
+use App\Http\Requests\Users\CreateValidator;
+use Illuminate\Support\Facades\Password; 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 
 /**
@@ -51,5 +55,24 @@ class IndexController extends Controller
     public function create(): Renderable 
     {
         return view('users.create');
+    }
+
+    /**
+     * Method for storing the new user in the application. 
+     * 
+     * @param  CreateValidator $input The form request class that handles the input validation. 
+     * @param  User            $user  The database model entity class.
+     * @return RedirectResponse
+     */
+    public function store(CreateValidator $input, User $user): RedirectResponse 
+    {
+        $input->merge(['password' => str_random(16)]);
+
+        if ($user = $user->create($input->all())) {
+            auth()->user()->logActivity($user, 'Gebruikers', "heeft een login aangemaakt voor {$user->name}");
+            $user->notify((new LoginCreated($input->all()))->delay(now()->addMinute())); // TODO: Implement notification class
+        }
+
+        return redirect()->route('users.index');
     }
 }

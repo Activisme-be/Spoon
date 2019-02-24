@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\ActivityLog;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
@@ -17,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable implements BannableContract
 {
-    use Notifiable, Bannable, HasRoles;
+    use Notifiable, Bannable, HasRoles, ActivityLog;
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +50,17 @@ class User extends Authenticatable implements BannableContract
     public function isOnline(): bool 
     {
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    /**
+     * Method for hashing the given password in the application storage.
+     *
+     * @param  string $password The given or generated password from the application/form
+     * @return void
+     */
+    public function setPasswordAttribute(string $password): void
+    {
+        $this->attributes['password'] = bcrypt($password);
     }
 
     /**
