@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Traits\ActivityLog;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Repositories\UserRepository;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Spatie\Permission\Traits\HasRoles;
@@ -17,7 +17,7 @@ use Spatie\Activitylog\Traits\CausesActivity;
  * 
  * @package App
  */
-class User extends Authenticatable implements BannableContract
+class User extends UserRepository implements BannableContract
 {
     use Notifiable, Bannable, HasRoles, ActivityLog, CausesActivity;
 

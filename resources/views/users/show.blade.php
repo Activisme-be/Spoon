@@ -29,6 +29,12 @@
                     <h6 class="border-bottom border-gray pb-1 mb-3">Algemene informatie van <strong>{{ $user->name }}</strong></h6>
                     @include('flash::message') {{-- Flash session view partial --}}
 
+                    @if ($user->isBanned())
+                        <div class="alert alert-danger alert-important">
+                            <i class="fe fe-alert-triangle mr-1"></i> Deze gebruiker is tijdelijk gedeactiveerd!
+                        </div>
+                    @endif
+
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="inputVoornaam">Voornaam @if (! $cantEdit) <span class="text-danger">*</span> @endif</label>
