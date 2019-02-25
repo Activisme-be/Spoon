@@ -81,4 +81,24 @@ class LockController extends Controller
 
         return redirect()->route('users.show', $userEntity);
     }
+
+    /**
+     * Method for activating users in the application. 
+     * 
+     * @param  User $userEntity The database entity from the given user.
+     * @return RedirectResponse
+     */
+    public function destroy(User $userEntity): RedirectResponse 
+    {
+        $this->authorize('activate-user', $userEntity); 
+
+        if ($userEntity->isBanned()) { // Conform that the user is actually banned. 
+            $userEntity->unban();
+
+            auth()->user()->logActivity($userEntity, 'Gebruikers', "heeft de login van {$userEntity->name} terug geactiveerd in het systeem."); 
+            flash("De login van {$userEntity->name} is terug actief in het systeem.")->success();
+        }
+
+        return redirect()->route('users.show', $userEntity);
+    }
 }

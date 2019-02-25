@@ -28,6 +28,7 @@ Route::get('{user}/logs', [ActivityController::class, 'show'])->name('user.activ
 // User state routes
 Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
 Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
+Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
 
 // User routes
