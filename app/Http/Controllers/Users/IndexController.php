@@ -60,8 +60,6 @@ class IndexController extends Controller
     /**
      * Method for displaying the create view for an new user. 
      *
-     * @todo Create view
-     *
      * @return Renderable
      */
     public function create(): Renderable 
