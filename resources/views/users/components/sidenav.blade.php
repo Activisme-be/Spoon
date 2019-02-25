@@ -24,7 +24,7 @@
             <i class="fe fe-mail text-secondary mr-2"></i> E-mail persoon
         </a>
 
-        @if ($user->isBanned())
+        @if ($user->isBanned() && $currentUser->can('activate-user', $user))
             <a href="" class="list-group-item list-group-item-action">
                 <i class="fe fe-unlock text-secondary mr-2"></i> Actieveer login
             </a>
