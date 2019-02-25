@@ -67,7 +67,7 @@ class LockController extends Controller
      * Method for deactivating users in the application. 
      *
      * @param  LockValidator $input         The form request class that handles the validation. 
-     * @param  User          $userEntity    The database entity form the given user
+     * @param  User          $userEntity    The database entity from the given user
      * @return RedirectResponse 
      */
     public function store(LockValidator $input, User $userEntity): RedirectResponse 
