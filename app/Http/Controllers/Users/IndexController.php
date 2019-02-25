@@ -25,7 +25,7 @@ class IndexController extends Controller
      */
     public function __construct() 
     {
-        $this->middleware(['auth', 'role:admin']);
+        $this->middleware(['auth', 'role:admin', 'forbid-banned-user']);
     }
 
     /**
@@ -81,7 +81,7 @@ class IndexController extends Controller
         $input->merge(['password' => str_random(16)]);
 
         if ($user = $user->create($input->all())) {
-            auth()->user()->logActivity($user, 'Gebruikers', "heeft een login aangemaakt voor {$user->name}");
+            auth()->user()->logActivity($user, 'Gebruikers', "Heeft een login aangemaakt voor {$user->name}");
             $user->notify((new LoginCreated($input->all()))->delay(now()->addMinute())); // TODO: Implement notification class
         }
 

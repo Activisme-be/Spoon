@@ -24,12 +24,12 @@
             <i class="fe fe-mail text-secondary mr-2"></i> E-mail persoon
         </a>
 
-        @if ($user->isBanned())
-            <a href="" class="list-group-item list-group-item-action">
+        @if ($user->isBanned() && $currentUser->can('activate-user', $user))
+            <a href="{{ route('users.unlock', $user) }}" class="list-group-item list-group-item-action">
                 <i class="fe fe-unlock text-secondary mr-2"></i> Actieveer login
             </a>
-        @else {{-- User is not banned --}}
-            <a href="" class="list-group-item list-group-item-action">
+        @elseif ($currentUser->can('deactivate-user', $user)) {{-- User is not banned --}}
+            <a href="{{ route('users.lock', $user) }}" class="list-group-item list-group-item-action">
                 <i class="fe fe-lock text-secondary mr-2"></i> Blokkeer login
             </a>
         @endif

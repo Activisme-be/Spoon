@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Users\IndexController;
+use App\Http\Controllers\Users\LockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes 
 Route::get('{user}/logs', [ActivityController::class, 'show'])->name('user.activity');
+
+// User state routes
+Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
+Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
+Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
+Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
 
 // User routes
 Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
