@@ -23,7 +23,27 @@ class LockController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth', 'forbid-banned-user'])->except(['index']);
+    }
+
+    /**
+     * Method for displaying the deactivated user error page. 
+     * 
+     * @return Renderable 
+     */
+    public function index(): Renderable 
+    {
+        $user = auth()->user(); 
+
+        // Check if the user is actually banned in the application. 
+        if ($user->isBanned()) {
+            $banInfo = auth()->user()->bans()->latest()->first();
+            return view('errors.deactivated', compact('banInfo'));
+        }
+
+        // We can't the lock on the user so there is no page to be displayed. 
+        // So redirect the user back to the dashboard page. 
+        return abort(Response::HTTP_NOT_FOUND);
     }
 
     /**
