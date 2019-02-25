@@ -23,7 +23,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes 
-Route::get('{user}/logs', [ActivityController::class, 'show'])->name('user.activity');
+Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
 
 // User state routes
 Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
