@@ -32,6 +32,7 @@ Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('
 Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
 
 // User routes
+Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
 Route::get('/gebruikers/zoek', [IndexController::class, 'search'])->name('users.search');
 Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
 Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('users.update');
