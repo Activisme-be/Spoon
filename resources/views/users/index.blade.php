@@ -32,6 +32,8 @@
 
     <div class="container-fluid pb-3">
         <div class="card card-body">
+            @include ('flash::message') {{-- Flash session view partial --}}
+            
             <div class="table-responsive">
                 <table class="table table-sm mb-0">
                     <thead>
@@ -81,7 +83,7 @@
                                             </a>
                                         @endif {{-- /// END lock check --}}                    
 
-                                        <a href="" class="mr-1 text-decoration-none text-danger">
+                                        <a href="{{ route('users.destroy', $user) }}" class="mr-1 text-decoration-none text-danger">
                                             <i class="fe fe-trash-2"></i>
                                         </a>
                                     </span>

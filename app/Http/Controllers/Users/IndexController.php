@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use Gate;
 use App\User;
 use App\Notifications\LoginCreated;
 use App\Http\Requests\Users\InformationValidator;
@@ -119,8 +120,32 @@ class IndexController extends Controller
      * 
      * @throws \Exception When we can't perform the user delete. 
      *
-     * @param 
-     * @param   
+     * @param  Request $request The request entity that holds all the request information.
+     * @param  User    $user    The database entity from the given user.
      * @return View|RedirectResponse 
      */
+    public function destroy(Request $request, User $user)
+    {
+        // 1) Request type is GET. So we need to display the confirmation view. 
+        // 2) Determine whether the user is deleted or not. 
+        // 3) Determine that the action needs to be logged or not. 
+        
+        if ($request->isMethod('GET')) { // (1)
+            return view('users.delete', compact('user'));
+        } 
+
+        $request->validate(['wachtwoord' => 'required', 'string']);
+
+        if ($user->securedRequest($request->wachtwoord) && $user->delete()) { // (2)
+            if (Gate::denies('same-user')) { // (3)
+                auth()->user()->logActivity($user, 'Gebruikers', "Heeft de gebruiker {$user->name} verwijderd in de applicatie.");
+            }
+
+            flash("De gebruiker {$user->name} is verwijderd in de applicatie.")->success()->important();
+            return redirect()->route('users.index');
+        }
+
+        flash("Wij konden de gebruiker {$user->name} niet verwijderen in de applicatie.")->error()->important();
+        return redirect()->route('users.destroy', $user);
+    }
 }

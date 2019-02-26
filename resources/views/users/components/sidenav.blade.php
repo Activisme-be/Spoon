@@ -34,7 +34,7 @@
             </a>
         @endif
 
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('users.destroy', $user) }}" class="list-group-item list-group-item-action">
             <i class="fe fe-user-x text-danger mr-2"></i> Verwijder login
         </a>
     </div>
