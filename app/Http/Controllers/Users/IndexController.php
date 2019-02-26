@@ -113,4 +113,14 @@ class IndexController extends Controller
 
         return redirect()->route('users.show', $user);
     }
+
+    /**
+     * Method for deleting the account in the application. 
+     * 
+     * @throws \Exception When we can't perform the user delete. 
+     *
+     * @param 
+     * @param   
+     * @return View|RedirectResponse 
+     */
 }
