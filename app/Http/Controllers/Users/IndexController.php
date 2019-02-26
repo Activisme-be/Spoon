@@ -42,7 +42,8 @@ class IndexController extends Controller
             case 'gedeactiveerd': $users = $users->onlyBanned();    break;
         }
 
-        return view('users.index', ['users' => $users->paginate()]);
+        $requestType = $request->filter;
+        return view('users.index', ['users' => $users->paginate(), 'requestType' => $requestType]);
     }
 
     /**
@@ -65,6 +66,17 @@ class IndexController extends Controller
     public function create(): Renderable 
     {
         return view('users.create');
+    }
+
+    /**
+     * Method for searching specific user account in the application. 
+     * 
+     * @param  Request $input THe request class that holds all the request information. 
+     * @return Renderable
+     */
+    public function search(Request $request, User $users): Renderable 
+    {
+        return view('users.index', ['users' => $users->search($request->term)->paginate(), 'requestType' => 'search']);
     }
 
     /**

@@ -23,8 +23,8 @@
                     </div>
                 </div>
 
-                <form method="GET" action="" class="w-100 ml-2">
-                    <input type="text" class="form-control" placeholder="Zoeken">
+                <form method="GET" action="{{ route('users.search') }}" class="w-100 ml-2">
+                    <input type="text" class="form-control" @input('term') placeholder="Zoeken">
                 </form>
             </div>
         </div>
@@ -88,6 +88,18 @@
                                 </td> {{-- /// Options --}}
                             </tr>
                         @empty {{-- There are no users found with the matching criteria --}}
+                            <tr>
+                                <td colspan="6">
+                                    <span class="text-secondary">
+                                        @switch ($requestType)
+                                            @case('search')         De zoekopdracht heeft geen resultaten opgeleverd.                   @break
+                                            @case('actief')         Er zijn geen actieve gebruikers gevonden in de applicatie.          @break
+                                            @case('gedeactiveerd')  Er zijn geen gedeactiveerde gebruikers gevonden in de applicatie.   @break
+                                            @default                Er zijn geen gebruikers in de applicatie gevonden.
+                                        @endswitch
+                                    </span>
+                                </td>
+                            </tr>
                         @endforelse {{-- /// END users loop --}}
                     </tbody>
                 </table>
