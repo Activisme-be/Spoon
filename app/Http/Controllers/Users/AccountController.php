@@ -37,7 +37,8 @@ class AccountController extends Controller
         // Determine on the switch statement which vierw the user wants to display
         // for modifying this account settings 
         switch ($request->type) {
-            default: return view('users.settings.information');
+            case 'beveiliging': return view('users.settings.security');
+            default:            return view('users.settings.information');
         }
     }
 
