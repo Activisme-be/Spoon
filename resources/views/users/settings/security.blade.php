@@ -15,7 +15,7 @@
             </div> {{-- /// END sidenav --}}
         
             <div class="col-9"> {{-- Content --}}
-                <form method="POST" action="" class="card card-body">
+                <form method="POST" action="{{ route('account.settings.security') }}" class="card card-body">
                     @csrf               {{-- Form field protection --}}
                     @form($currentUser) {{-- Bind the authenticated user data to the form --}}
                     @method ('PATCH')   {{-- HTTP method spoofing --}}
