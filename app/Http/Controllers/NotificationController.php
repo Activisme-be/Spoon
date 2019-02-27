@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Repositories\NotificationsRepository;
+use Illuminate\Notifications\DatabaseNotification; 
 
 /**
  * NotificationController
@@ -35,6 +37,8 @@ class NotificationController extends Controller
     /**
      * Method for displaying the index view for the user his notifications. 
      * 
+     * @todo Implement avatar helpder. 
+     * 
      * @param  null|string $type The type of notifications u want to get in the application.
      * @return Renderable
      */
@@ -45,5 +49,28 @@ class NotificationController extends Controller
         $viewVariables      = ['notifications' => $notificationData['notifications'], 'type' => $notificationData['type']];
         
         return view('notifications.index', array_merge($notificationsCount, $viewVariables));
+    }
+
+    /**
+     * Method for marking the given notification as read. 
+     * 
+     * @param  DatabaseNotification $notification The resource entity from the notification.
+     * @return RedirectResponse
+     */
+    public function markOne(DatabaseNotification $notification): RedirectResponse 
+    {
+        $notification->markAsRead();
+        return redirect()->route('notifications.index');
+    }
+
+    /**
+     * Method for marking all the unread notifications from the user as read. 
+     * 
+     * @return RedirectResponse
+     */
+    public function markAll(): RedirectResponse 
+    {
+        $this->notificationRepository->markAllAsRead(); 
+        return redirect()->route('notifications.index');
     }
 }

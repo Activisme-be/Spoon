@@ -6,7 +6,7 @@
             <h1 class="page-title">Notificaties</h1>
 
             <div class="page-options">
-                <a href="" class="btn @if ($unreadCount === 0) disabled @endif btn-outline-secondary">
+                <a href="{{ route('notifications.markAll') }}" class="btn @if ($unreadCount === 0) disabled @endif btn-outline-secondary">
                     <i class="fe fe-bell-off mr-1"></i> Markeer alles als gelezen
                 </a>
             </div>

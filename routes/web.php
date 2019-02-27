@@ -29,6 +29,8 @@ Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.acti
 
 // Notification routes 
 Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->name('notifications.index');
+Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
+Route::get('/notificaties/markOne/{notification}', [NotificationController::class, 'markOne'])->name('notifications.markAsRead');
 
 // User state routes
 Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');

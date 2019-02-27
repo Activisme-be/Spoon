@@ -36,4 +36,14 @@ class NotificationsRepository
                 return ['type' => 'ongelezen', 'notifications' => $this->getAuthUser()->unreadNotifications()->simplePaginate()];
         } 
     }
+
+    /**
+     * Method for marking all the unread notifications from the user as read. 
+     * 
+     * @return void 
+     */
+    public function markAllAsRead(): void
+    {
+        $this->getAuthUser()->unreadNotifications->markAsread();
+    }
 }
