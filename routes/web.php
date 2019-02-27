@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Users\IndexController;
+use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Users\LockController;
 
 /*
@@ -30,6 +31,11 @@ Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('us
 Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
 Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
+
+// User Settings routes
+Route::get('/account/{type?}', [AccountController::class, 'index'])->name('account.settings');
+Route::patch('/account/informatie', [AccountController::class, 'updateInformation'])->name('account.settings.info');
+Route::patch('/account/beveiliging', [AccountController::class, 'updateSecurity'])->name('account.settings.security');
 
 // User routes
 Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
