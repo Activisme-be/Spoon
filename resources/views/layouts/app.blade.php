@@ -50,9 +50,6 @@
                             <a class="dropdown-item" href=" {{ route('account.settings') }}">
                                 <i class="fe fe-sliders mr-1 text-secondary"></i> Instellingen
                             </a>
-                            <a class="dropdown-item" href="">
-                                <i class="fe fe-alert-octagon mr-1 text-secondary"></i> Probleem melden
-                            </a>
 
                             <div class="dropdown-divider"></div>
 
