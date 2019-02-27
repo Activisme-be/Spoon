@@ -24,6 +24,7 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
         "fzaninotto/faker": "^1.4",
         "laravel/telescope": "^1.0",
         "mockery/mockery": "^1.0",
@@ -66,6 +67,9 @@
     "scripts": {
         "check-security": [
             "vendor/bin/security-checker security:check"
+        ],
+        "format": [
+            "vendor/bin/php-cs-fixer fix"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

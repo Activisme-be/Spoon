@@ -2,19 +2,18 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Traits\ActivityLog;
 use App\Repositories\UserRepository;
+use App\Traits\ActivityLog;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\CausesActivity;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Class User 
- * 
+ * Class User
+ *
  * @package App
  */
 class User extends UserRepository implements BannableContract
@@ -44,11 +43,11 @@ class User extends UserRepository implements BannableContract
 
 
     /**
-     * Method for tracking if the user or not. 
-     * 
+     * Method for tracking if the user or not.
+     *
      * @return bool
      */
-    public function isOnline(): bool 
+    public function isOnline(): bool
     {
         return Cache::has('user-is-online-' . $this->id);
     }

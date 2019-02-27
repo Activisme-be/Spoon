@@ -3,13 +3,13 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 /**
- * Class LoginCreated 
- * 
+ * Class LoginCreated
+ *
  * @package App\Notifications
  */
 class LoginCreated extends Notification implements ShouldQueue
@@ -17,16 +17,16 @@ class LoginCreated extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * The variable that holds all the form inputs. 
-     * 
-     * @var array 
+     * The variable that holds all the form inputs.
+     *
+     * @var array
      */
     public $input;
 
     /**
      * Create a new notification instance.
      *
-     * @param  array $input The variable that holds the form request inputs. 
+     * @param  array $input The variable that holds the form request inputs.
      * @return void
      */
     public function __construct(array $input)

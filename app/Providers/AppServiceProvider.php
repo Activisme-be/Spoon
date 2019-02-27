@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Composers\LayoutComposer;
-use Laravel\Telescope\TelescopeServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

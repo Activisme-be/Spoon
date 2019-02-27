@@ -1,16 +1,16 @@
 <?php
 
-use Spatie\Seeders\Faker;
 use App\User;
 use Illuminate\Database\Seeder;
+use Spatie\Seeders\Faker;
 
 /**
- * Class UserTableSeeder 
+ * Class UserTableSeeder
  */
 class UserTableSeeder extends Seeder
 {
     const WEBMASTER = 'webmaster'; // Role name for webmasters in the application.
-    const RVB       = 'admin';     // Role name for board members in the application. 
+    const RVB       = 'admin';     // Role name for board members in the application.
 
     /**
      * Run the database seeds.
@@ -34,18 +34,18 @@ class UserTableSeeder extends Seeder
     }
 
     /**
-     * Determine if the given address is an webmaster in the application. 
+     * Determine if the given address is an webmaster in the application.
      *
      * @return bool
      */
-    protected function isInWebmasterArray(string $email): bool 
+    protected function isInWebmasterArray(string $email): bool
     {
         return in_array($email, $this->organisationWebmasters());
     }
 
 
     /**
-     * The array of email addresses that are webmasters in the application. 
+     * The array of email addresses that are webmasters in the application.
      *
      * @return array
      */
@@ -55,21 +55,21 @@ class UserTableSeeder extends Seeder
     }
 
     /**
-     * Get the list of the members in the non profit organisation. 
-     * This list is also used in the creation of the basic logins 
+     * Get the list of the members in the non profit organisation.
+     * This list is also used in the creation of the basic logins
      * for the application barebone.
-     * 
+     *
      * @return array
      */
-    protected function organisationMembers(): array 
+    protected function organisationMembers(): array
     {
         return [['Tim', 'Joosten'], ['Sara', 'Landuyt'], ['Tom', 'Manheaghe']];
     }
 
     /**
-     * Method for creating the actual logins. 
-     * 
-     * @param  array $attributes 
+     * Method for creating the actual logins.
+     *
+     * @param  array $attributes
      * @return User
      */
     protected function createBackUser(array $attributes = []): User

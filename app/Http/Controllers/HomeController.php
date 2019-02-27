@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
 /**
  * Class HomeController
- * ---- 
- * Controllers that handles the application home pages. 
- * 
+ * ----
+ * Controllers that handles the application home pages.
+ *
  * @package App\Http\Controllers
  */
 class HomeController extends Controller
@@ -26,11 +25,11 @@ class HomeController extends Controller
     }
 
     /**
-     * Get the first page of the application. 
-     * 
+     * Get the first page of the application.
+     *
      * @return Renderable
      */
-    public function welcome(): Renderable 
+    public function welcome(): Renderable
     {
         return view('auth.login');
     }
