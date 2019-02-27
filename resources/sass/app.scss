@@ -9,6 +9,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import "~primer-blankslate/index.scss";
+
+.blankslate {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
 
 .dropdown-item.active,
 .dropdown-item:active {

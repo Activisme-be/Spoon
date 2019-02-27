@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Users\IndexController;
 use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Users\LockController;
@@ -25,6 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes 
 Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
+
+// Notification routes 
+Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->name('notifications.index');
 
 // User state routes
 Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
