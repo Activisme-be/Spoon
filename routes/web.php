@@ -34,7 +34,7 @@ Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name(
 
 // User Settings routes
 Route::get('/account/{type?}', [AccountController::class, 'index'])->name('account.settings');
-
+Route::patch('/account/information', [AccountController::class, 'updateInformation'])->name('account.settings.info');
 // User routes
 Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
 Route::get('/gebruikers/zoek', [IndexController::class, 'search'])->name('users.search');

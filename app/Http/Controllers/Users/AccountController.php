@@ -40,4 +40,19 @@ class AccountController extends Controller
             default: return view('users.settings.information');
         }
     }
+
+    /**
+     * Method for updating the account information from the authenticated user. 
+     * 
+     * @param  InformationValidator $input The form request class that handles the validation.
+     * @return RedirectResponse 
+     */
+    public function updateInformation(InformationValidator $input): RedirectResponse 
+    {
+        if (auth()->user()->update($input->all())) { // Update confirmation 
+            flash('Uw accunt informatie is met success aangepast.')->success()->important();
+        }
+
+        return redirect()->back(); // HTTP 302 - Redirect
+    }
 }
