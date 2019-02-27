@@ -17,7 +17,8 @@
         "laravel/tinker": "^1.0",
         "spatie/laravel-activitylog": "^3.2",
         "spatie/laravel-permission": "^2.33",
-        "spatie/seeders": "^5.1"
+        "spatie/seeders": "^5.1",
+        "watson/active": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
