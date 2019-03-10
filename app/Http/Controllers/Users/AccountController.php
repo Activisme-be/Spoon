@@ -66,7 +66,7 @@ class AccountController extends Controller
      */
     public function updateSecurity(Request $request, User $user): RedirectResponse
     {
-        $request->validate(['wachtwoord' => ['required', 'string', 'min:6', 'confirmed'], 'huidig_wachtwoord' => ['required', 'string']]);
+        $request->validate(['wachtwoord' => ['required', 'string', 'min:8', 'confirmed'], 'huidig_wachtwoord' => ['required', 'string']]);
 
         // User can only update his account security when the old password is correct.
         if (auth()->user()->securedRequest($request->huidig_wachtwoord)) {
