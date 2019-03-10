@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\InformationValidator;
 use App\Notifications\LoginCreated;
@@ -88,7 +89,7 @@ class IndexController extends Controller
      */
     public function store(InformationValidator $input, User $user): RedirectResponse
     {
-        $input->merge(['password' => str_random(16)]);
+        $input->merge(['password' => Str::random(16)]);
 
         if ($user = $user->create($input->all())) {
             auth()->user()->logActivity($user, 'Gebruikers', "Heeft een login aangemaakt voor {$user->name}");
