@@ -4,29 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf4c2dc04f6c2b890cc1e143d2c785fb",
+    "content-hash": "0a05090d48bb4323abfcbe784a9dc76e",
     "packages": [
         {
             "name": "actb/laravel-form-helpers",
-            "version": "1.3.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Activisme-be/Laravel-validation-helper.git",
-                "reference": "c90b5f921e22a931c63122d1a147de337d091de7"
+                "reference": "b87a4a8e6b04369f407e02401d9020ee6444246d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Activisme-be/Laravel-validation-helper/zipball/c90b5f921e22a931c63122d1a147de337d091de7",
-                "reference": "c90b5f921e22a931c63122d1a147de337d091de7",
+                "url": "https://api.github.com/repos/Activisme-be/Laravel-validation-helper/zipball/b87a4a8e6b04369f407e02401d9020ee6444246d",
+                "reference": "b87a4a8e6b04369f407e02401d9020ee6444246d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.0"
+                "php": ">=7.2.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.9",
-                "laravel/laravel": "~5.4|~5.5|~5.6",
-                "phpunit/phpunit": "~6.0",
+                "laravel/laravel": "~5.8",
+                "phpunit/phpunit": "~8.0",
                 "sensiolabs/security-checker": "^4.1"
             },
             "type": "library",
@@ -57,7 +57,7 @@
                 "session",
                 "validation"
             ],
-            "time": "2019-02-23T22:07:28+00:00"
+            "time": "2019-03-10T21:13:50+00:00"
         },
         {
             "name": "anahkiasen/underscore-php",
@@ -2639,7 +2639,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
