@@ -39,8 +39,12 @@ class IndexController extends Controller
     public function index(Request $request, User $users): Renderable
     {
         switch ($request->filter) {
-            case 'actief':        $users = $users->withoutBanned(); break;
-            case 'gedeactiveerd': $users = $users->onlyBanned();    break;
+            case 'actief':
+                $users = $users->withoutBanned();
+                break;
+            case 'gedeactiveerd':
+                $users = $users->onlyBanned();
+                break;
         }
 
         $requestType = $request->filter;
