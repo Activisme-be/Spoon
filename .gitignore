@@ -6,6 +6,7 @@
 /.php_cs.cache
 .env
 /.idea
+/spoon
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

@@ -15,6 +15,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class WelcomePageTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @test
      * @testdox Test that the welcome page from the application can be viewed as guest.
