@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Back\Notifications;
 
-use Illuminate\Database\Eloquent\Collection;
+use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Notifications\DatabaseNotification;
 use Tests\TestCase;
+use Tests\Concerns\DummyNotificationsTrait;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,40 +16,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class MarkOneMethodTest extends TestCase
 {
-    use RefreshDatabase;
-
-    /**
-     * Method for generating fake notifications.
-     *
-     * @throws \Exception <- Native PHP class
-     *
-     * @param  int|null $amount The amount of fake notifications u want to create.
-     * @return DatabaseNotification|Collection
-     */
-    private function createDummyNotification(?int $amount = null)
-    {
-        $data = [
-            'id' => faker()->uuid,
-            'type' => 'Namespace\ClassNameOfNotification',
-            'notifiable_type' => "Notifiable\Model",
-            'notifiable_id' => random_int(8888, 9999), // id of the notifiable model
-            'data' => [
-                'any' => 'value'
-            ],
-        ];
-
-        if ($amount === null) { // There is not given an amount of dummy notifications
-            return factory(DatabaseNotification::class)->create($data);
-        }
-
-        return factory(DatabaseNotification::class, $amount)->create($data);
-    }
+    use RefreshDatabase, DummyNotificationsTrait;
 
     /**
      * @test
      * @testdox Test if an unauthenticated user cant mark a notification as read.
      *
-     * @throws \Exception <- Native PHP class
+     * @throws Exception <- Native PHP class
      */
     public function notAuthenticated(): void
     {
@@ -65,7 +38,7 @@ class MarkOneMethodTest extends TestCase
      * @test
      * @testdox Test that an deactivated user can't mark an notification as read.
      *
-     * @throws \Exception <- Native PHP class
+     * @throws Exception <- Native PHP class
      */
     public function deactivatedUser(): void
     {
@@ -82,7 +55,7 @@ class MarkOneMethodTest extends TestCase
      * @test
      * @testdox Test that an authenticated user can mark a notification as read.
      *
-     * @throws \Exception <- Native PHP class
+     * @throws Exception <- Native PHP class
      */
     public function authenticatedUserSuccess(): void
     {
