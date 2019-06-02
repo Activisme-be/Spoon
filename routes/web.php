@@ -21,7 +21,7 @@ use App\Http\Controllers\Users\LockController;
 Auth::routes(['register' => false]);
  
 // Home routes
-Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome'); // TODO:
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes
