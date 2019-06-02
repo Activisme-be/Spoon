@@ -33,7 +33,7 @@ class DashboardPageTest extends TestCase
      */
     public function authenticatedUserSuccess(): void
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser('user');
         $this->actingAs($user)->get(route('home'))->assertStatus(Response::HTTP_OK);
     }
 
@@ -43,8 +43,7 @@ class DashboardPageTest extends TestCase
      */
     public function redirectBlockedUser(): void
     {
-        $user  = factory(User::class)->create()->ban();
-        $authUser = User::find($user->id);
+        $authUser = $this->createUserBlocked();
 
         $this->actingAs($authUser)
             ->get(route('home'))

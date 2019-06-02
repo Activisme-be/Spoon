@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome'); // TODO: D
 Route::get('/home', 'HomeController@index')->name('home'); // TODO: DONE
 
 // Activity routes
-Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
+Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity'); // TODO: DONE
 
 // Notification routes
 Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->name('notifications.index');

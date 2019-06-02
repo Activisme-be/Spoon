@@ -32,7 +32,7 @@ class WelcomePageTest extends TestCase
      */
     public function WelcomePageAsLoggedInUser(): void
     {
-        $user = factory(User::class)->create();
+        $user = $this->createUser('user');
         $this->actingAs($user)->get(route('welcome'))->assertRedirect(route('home'))->assertStatus(Response::HTTP_FOUND);
     }
 }
