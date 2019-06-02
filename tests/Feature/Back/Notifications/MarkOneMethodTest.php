@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Back\Notifications;
 
-use Exception;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 use Tests\Concerns\DummyNotificationsTrait;
@@ -22,7 +21,7 @@ class MarkOneMethodTest extends TestCase
      * @test
      * @testdox Test if an unauthenticated user cant mark a notification as read.
      *
-     * @throws Exception <- Native PHP class
+     * @throws \Exception <- Native PHP class
      */
     public function notAuthenticated(): void
     {
@@ -38,7 +37,7 @@ class MarkOneMethodTest extends TestCase
      * @test
      * @testdox Test that an deactivated user can't mark an notification as read.
      *
-     * @throws Exception <- Native PHP class
+     * @throws \Exception <- Native PHP class
      */
     public function deactivatedUser(): void
     {
@@ -55,7 +54,7 @@ class MarkOneMethodTest extends TestCase
      * @test
      * @testdox Test that an authenticated user can mark a notification as read.
      *
-     * @throws Exception <- Native PHP class
+     * @throws \Exception <- Native PHP class
      */
     public function authenticatedUserSuccess(): void
     {

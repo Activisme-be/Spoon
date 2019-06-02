@@ -3,11 +3,9 @@
 namespace Tests\Feature\Back;
 
 use App\User;
-use Illuminate\Http\Response;
-use Spatie\Permission\Models\Role;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
+use Tests\TestCase;
 
 /**
  * Class DashboardPageTest
