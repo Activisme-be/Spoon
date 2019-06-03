@@ -9,7 +9,8 @@
                         <h5 class="text-danger pb-1 mb-3"><i class="fe mr-1 fe-lock"></i> Account is gedeactiveerd</h5>
 
                         <p class="card-text">
-                           {{ $banInfo->createdBy->name }} heeft jouw account tijdelijk gedeactiveerd in de applicatie wegens {{ $banInfo->comment }}.
+                           {{ $banInfo->createdBy->name ?? 'Onbekende gebruiker' }}
+                            heeft jouw account tijdelijk gedeactiveerd in de applicatie wegens {{ $banInfo->comment }}.
                         </p>
 
                         <hr class="mt-0">
@@ -18,8 +19,8 @@
                             <i class="fe mr-1 fe-power"></i> Afmelden
                         </a>
 
-                        <a class="card-link" href="mailto:{{$banInfo->createdBy->email}}?SUBJECT=Deactivatie van login op {{ config('app.name') }}">
-                            <i class="fe mr-1 fe-inbox"></i> Contacteer {{ $banInfo->createdBy->name}}
+                        <a class="card-link" href="mailto:{{$banInfo->createdBy->email ?? 'info@activisme.be' }}?SUBJECT=Deactivatie van login op {{ config('app.name') }}">
+                            <i class="fe mr-1 fe-inbox"></i> Contacteer {{ $banInfo->createdBy->name ?? config('app.name') }}
                         </a>
 
                         <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">

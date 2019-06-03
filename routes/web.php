@@ -33,7 +33,7 @@ Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])-
 Route::get('/notificaties/markOne/{notification}', [NotificationController::class, 'markOne'])->name('notifications.markAsRead'); // TODO: DONE
 
 // User state routes
-Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
+Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked'); // TODO: DONE
 Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
 Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
