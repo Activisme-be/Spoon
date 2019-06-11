@@ -24,14 +24,14 @@ class UserPolicy
      */
     public function deactivateUser(User $user, User $model): bool
     {
-        return $user->id !== $model->id;
+        return $user->id !== $model->id && $user->hasanyrole('admin|webmaster');
     }
 
     /**
      * Determine whether the authenticated user can activate users back in the application.
      *
      * @param  User $user   Entity of the authenticated user.
-     * @param  User $user   Entity from the given user.
+     * @param  User $model  Entity from the given user.
      * @return bool
      */
     public function activateUser(User $user, User $model): bool
