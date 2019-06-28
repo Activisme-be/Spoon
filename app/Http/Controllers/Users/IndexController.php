@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Users;
 
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\InformationValidator;
 use App\Notifications\LoginCreated;
@@ -11,6 +10,7 @@ use Gate;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class IndexController
