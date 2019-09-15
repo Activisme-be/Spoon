@@ -12,7 +12,7 @@
         "actb/laravel-form-helpers": "1.4.*",
         "actb/laravel-validation-rules": "dev-master",
         "bacon/bacon-qr-code": "^2.0",
-        "cybercog/laravel-ban": "^3.5",
+        "cybercog/laravel-ban": "^4.1",
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
         "laravel/framework": "^6.0",
@@ -24,7 +24,7 @@
         "spatie/laravel-backup": "^6.1",
         "spatie/laravel-permission": "^2.33",
         "spatie/seeders": "^5.1",
-        "watson/active": "^3.0"
+        "watson/active": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
