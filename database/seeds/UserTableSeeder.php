@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\User;
-use Spatie\Seeders\Faker;
+use Faker\Factory;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 
 /**
@@ -9,9 +10,8 @@ use Illuminate\Database\Seeder;
  */
 class UserTableSeeder extends Seeder
 {
-    const WEBMASTER = 'webmaster'; // Role name for webmasters in the application.
-
-    const RVB = 'admin';     // Role name for board members in the application.
+    public const WEBMASTER = 'webmaster';  // Role name for webmasters in the application.
+    public const RVB = 'admin';            // Role name for board members in the application.
 
     /**
      * Run the database seeds.
@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
         collect($this->organisationMembers())->each(function (array $name): void {
             [$firstName, $lastName] = $name;
 
-            $data = ['voornaam' => $name[0], 'achternaam' => $name[1], 'email' => strtolower($name[0]).'@activisme.be', 'password' => 'password'];
+            $data = ['voornaam' => $name[0], 'achternaam' => $name[1], 'email' => strtolower($name[0]) . '@activisme.be', 'password' => 'password'];
             $user = $this->createBackUser($data);
 
             if ($this->isInWebmasterArray($user->email)) {
@@ -41,7 +41,7 @@ class UserTableSeeder extends Seeder
      */
     protected function isInWebmasterArray(string $email): bool
     {
-        return in_array($email, $this->organisationWebmasters());
+        return in_array($email, $this->organisationWebmasters(), true);
     }
 
     /**
@@ -69,19 +69,42 @@ class UserTableSeeder extends Seeder
     /**
      * Method for creating the actual logins.
      *
-     * @param  array $attributes
+     * @param array $attributes
      * @return User
      */
     protected function createBackUser(array $attributes = []): User
     {
-        $person = app(Faker::class)->person();
+        $person = $this->fakerPerson();
+        $data = ['voornaam' => $person['firstName'], 'achternaam' => $person['lastName'], 'email' => $person['email'], 'email_verified_at' => now(), 'password' => $this->faker()->password];
 
-        return User::create($attributes + [
-            'voornaam' => $person['firstName'],
-            'achternaam' => $person['lastName'],
-            'email' => $person['email'],
-            'email_verified_at' => now(),
-            'password' => faker()->password,
-        ]);
+        return User::create(array_merge($attributes, $data));
+    }
+
+    /**
+     * Method for setting up faker in this seed .
+     *
+     * @param  string|null $locale The country code for the region.
+     * @return Generator
+     */
+    protected function faker(?string $locale = null): Generator
+    {
+        return Factory::create($locale ?? Factory::DEFAULT_LOCALE);
+    }
+
+    /**
+     * Method for creating a fake person entity.
+     *
+     * @param  string $firstName The firstname of the fake identity
+     * @param  string $lastName  The lastname of the fake identity
+     * @return array
+     */
+    protected function fakerPerson($firstName = '', $lastName = ''): array
+    {
+        $firstName = $firstName ?: $this->faker()->firstName();
+        $lastName = $lastName ?: $this->faker()->lastName;
+
+        $email = strtolower($firstName) . '.' . strtolower($lastName) . '@activisme.be';
+
+        return compact('firstName', 'lastName', 'email');
     }
 }

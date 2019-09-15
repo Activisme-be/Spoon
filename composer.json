@@ -23,7 +23,6 @@
         "spatie/laravel-activitylog": "^3.2",
         "spatie/laravel-backup": "^6.1",
         "spatie/laravel-permission": "^2.33",
-        "spatie/seeders": "^5.1",
         "watson/active": "^4.0"
     },
     "require-dev": {
