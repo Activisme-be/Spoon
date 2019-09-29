@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\TwoFactorRecoveryRequest;
 use App\Notifications\TwoFactorResetNotification;
 use App\Repositories\TwoFactorAuth\Authenticator as AuthenticatorRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class TwoFactorResetController
@@ -50,8 +50,13 @@ class TwoFactorResetController extends Controller
      */
     public function request(TwoFactorRecoveryRequest $request): RedirectResponse
     {
+        $user = $this->getAuthenticatedUser();
+
         if ($this->authenticator->canDisplayRecoveryView()) {
-            $this->getAuthenticatedUser()->notify(new TwoFactorResetNotification());
+            DB::transaction(static function () use ($request, $user): void {
+                $user->passwordSecurity()->update(['reset_requested' => true]);
+                $user->notify(new TwoFactorResetNotification());
+            });
         }
 
         session()->flash('status', 'We hebben je reset aanvraag goed ontvangen. Binnen enkele ogenblikken ontvang je een reset mail van ons.');
