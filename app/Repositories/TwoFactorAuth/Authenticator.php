@@ -27,6 +27,15 @@ class Authenticator extends BaseAuthenticator
     }
 
     /**
+     * Determine wheter we can display the 2FA recovery view or not.
+     * @return bool
+     */
+    public function canDisplayRecoveryView(): bool
+    {
+        return $this->isEnabled() && ! $this->isAuthenticated();
+    }
+
+    /**
      * Method for getting the Google 2FA token.
      *
      * @return string
