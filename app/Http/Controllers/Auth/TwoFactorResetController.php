@@ -18,11 +18,22 @@ use Illuminate\Support\Facades\DB;
  */
 class TwoFactorResetController extends Controller
 {
+    /**
+     * @var AuthenticatorRepository
+     */
     private $authenticator;
 
+    /**
+     * TwoFactorResetController constructor.
+     *
+     * @param  AuthenticatorRepository $authenticator
+     * @return void
+     */
     public function __construct(AuthenticatorRepository $authenticator)
     {
         $this->middleware('auth');
+        $this->middleware('signed')->only('handle');
+
         $this->authenticator = $authenticator;
     }
 
@@ -63,8 +74,23 @@ class TwoFactorResetController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Handle the reset method for the 2FA system.
+     *
+     * @return RedirectResponse
+     */
     public function handle(): RedirectResponse
     {
         abort_if(! $this->authenticator->canDisplayRecoveryView(), Response::HTTP_NOT_FOUND);
+        $user = $this->getAuthenticatedUser();
+
+        if ($user->passwordSecurity()->exists() && $user->passwordSecurity->reset_requested) {
+            $user->passwordSecurity()->delete();
+
+            session()->get('status', 'Het 2FA authenticatie systeem is verwijderd van jouw account.');
+            auth()->logout();
+        }
+
+        return redirect()->route('welcome');
     }
 }
