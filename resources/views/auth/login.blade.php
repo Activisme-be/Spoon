@@ -14,6 +14,12 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf {{-- Form field protection --}}
 
+                                @if (session()->has('status'))
+                                    <div class="alert alert-info border-0 small" role="alert">
+                                        {{ session()->get('status') }}
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label for="email">E-Mail Address</label>
 

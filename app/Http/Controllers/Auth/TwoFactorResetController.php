@@ -9,6 +9,7 @@ use App\Repositories\TwoFactorAuth\Authenticator as AuthenticatorRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Exceptions\InvalidSignatureException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -61,6 +62,9 @@ class TwoFactorResetController extends Controller
      */
     public function request(TwoFactorRecoveryRequest $request): RedirectResponse
     {
+        // Password hash check is performed on the Form validation.
+        // If the user password is not the same than te given password this logic will not be executed.
+
         $user = $this->getAuthenticatedUser();
 
         if ($this->authenticator->canDisplayRecoveryView()) {
@@ -84,11 +88,16 @@ class TwoFactorResetController extends Controller
         abort_if(! $this->authenticator->canDisplayRecoveryView(), Response::HTTP_NOT_FOUND);
         $user = $this->getAuthenticatedUser();
 
-        if ($user->passwordSecurity()->exists() && $user->passwordSecurity->reset_requested) {
-            $user->passwordSecurity()->delete();
+        try {
+            if ($user->passwordSecurity()->exists() && $user->passwordSecurity->reset_requested) {
+                $user->passwordSecurity()->delete();
 
-            session()->get('status', 'Het 2FA authenticatie systeem is verwijderd van jouw account.');
-            auth()->logout();
+                auth()->logout();
+                session()->get('status', 'Het 2FA authenticatie systeem is verwijderd van jouw account.');
+            }
+        } catch (InvalidSignatureException $exception) {
+            session()->flash('status', 'Wij konden momenteel de 2FA van het gegeven account niet resetten');
+            return redirect()->route('recovery.2fa');
         }
 
         return redirect()->route('welcome');

@@ -1,4 +1,4 @@
-@extends('layouts.auth', ['title' => '2FA authenticatie'])
+@extends ('layouts.auth', ['title' => 'Reset 2FA'])
 
 @section('content')
     <section class="h-100">
@@ -10,30 +10,30 @@
                     </div>
                     <div class="card fat">
                         <div class="card-body tw-shadow">
-                            <h4 class="card-title">2FA verificatie code</h4>
-                            <form method="POST" action="{{ route('2faVerify') }}">
+                            <h4 class="card-title">Reset 2FA</h4>
+                            <form method="POST" action="{{ route('recovery.2fa.request') }}">
                                 @csrf {{-- Form field protection --}}
 
+                                @if (session()->has('status'))
+                                    <div class="alert alert-info border-0 small" role="alert">
+                                        {{ session()->get('status') }}
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
-                                    <label for="otp">
-                                        Authenticator code
+                                    <label for="password">Uw wachtwoord</label>
 
-                                        <a href="{{ route('recovery.2fa') }}" class="text-decoration-none float-right">
-                                            Smartphone vergeten?
-                                        </a>
-                                    </label>
-
-                                    <input id="otp" type="password" placeholder="Authenticator code" class="form-control {{ $errors->has('one_time_password-code') ? ' is-invalid' : '' }}" name="one_time_password" value="" required autofocus>
+                                    <input id="password" type="password" class="form-control {{ $errors->has('wachtwoord') ? ' is-invalid' : '' }}" name="wachtwoord" value="" required autofocus>
 
 
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('one_time_password-code') }}</strong>
+                                        <strong>{{ $errors->first('wachtwoord') }}</strong>
                                     </span>
                                 </div>
 
                                 <div class="form-group no-margin">
                                     <button type="submit" class="btn btn-primary btn-block">
-                                        Login
+                                        Reset
                                     </button>
                                 </div>
                             </form>
