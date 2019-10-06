@@ -46,8 +46,6 @@ npm run dev
 
 De beschikbare build taken kun je terug vinden in de `package.json` file.
 
-## Colofon 
-
 ### Colofon 
 In het algemeen accepteren we geen PR's van buitenstaander in deze Repository.
 Maar als je een bg hebt gevonden of een idee hebt richting een verbetering. 
