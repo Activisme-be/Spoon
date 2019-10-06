@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('voornaam');
             $table->string('achternaam');
             $table->string('email')->unique();
+            $table->boolean('reset_requested')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

@@ -18,7 +18,7 @@
                                     <label for="otp">
                                         Verificatie code
 
-                                        <a href="{{ route('2fa.recovery') }}" class="text-decoration-none float-right">
+                                        <a href="{{ route('recovery.2fa') }}" class="text-decoration-none float-right">
                                             Code vergeten?
                                         </a>
                                     </label>
