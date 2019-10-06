@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@extends('layouts.auth', ['title' => '2 factor authenticatie'])
-=======
 @extends('layouts.auth', ['title' => '2FA authenticatie'])
->>>>>>> 0b6f438edad1ace5566030cf8d0f850df751ff2f
 
 @section('content')
     <section class="h-100">
