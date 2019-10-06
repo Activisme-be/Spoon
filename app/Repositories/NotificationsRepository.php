@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
 use App\Models\SystemAlert;
+use App\Models\User;
+use App\Notifications\SystemAlert as AlertNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Notifications\SystemAlert as AlertNotification;
 
 /**
  * Class NotificationsRepository.

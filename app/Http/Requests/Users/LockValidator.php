@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Users;
 
+use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
-use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
 
 /**
  * Class LockValidator.

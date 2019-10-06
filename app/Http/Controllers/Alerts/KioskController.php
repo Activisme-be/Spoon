@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Alerts;
 
-use App\Models\SystemAlert;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Contracts\Support\Renderable;
-use App\Repositories\NotificationsRepository;
 use App\Http\Requests\Alerts\SystemNotificationRequest;
+use App\Models\SystemAlert;
+use App\Repositories\NotificationsRepository;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class KioskController.

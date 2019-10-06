@@ -2,8 +2,8 @@
 
 namespace App\Composers;
 
-use Illuminate\View\View;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\View\View;
 
 /**
  * Class LayoutComposer.

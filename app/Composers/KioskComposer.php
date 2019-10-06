@@ -2,9 +2,9 @@
 
 namespace App\Composers;
 
-use stdClass;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use stdClass;
 
 /**
  * Class KioskComposer.
@@ -26,7 +26,7 @@ class KioskComposer
 
     /**
      * Method for getting the audit entry counts for the dashboard
-     * 
+     *
      * @return stdClass
      */
     private function getAuditCounters(): stdClass
@@ -38,11 +38,11 @@ class KioskComposer
     }
 
     /**
-     * Method for getting the system alert counters. 
-     * 
+     * Method for getting the system alert counters.
+     *
      * @return stdClass
      */
-    private function getNotificationCounters(): stdClass 
+    private function getNotificationCounters(): stdClass
     {
         return DB::table('system_alerts')
             ->selectRaw('count(*) as total')

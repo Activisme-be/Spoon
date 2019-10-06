@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 
 /**
  * Class PasswordSecurityController.

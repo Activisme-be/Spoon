@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
 use Cog\Contracts\Ban\Bannable as BannableContract;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class ForbidBannedUser.

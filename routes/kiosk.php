@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\Users\LockController;
-use App\Http\Controllers\Users\IndexController;
 use App\Http\Controllers\Alerts\KioskController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Users\IndexController;
+use App\Http\Controllers\Users\LockController;
 
 /*
 |--------------------------------------------------------------------------

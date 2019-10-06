@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class CreateValidator.
- * 
+ *
  * @package App\Http\Requests\Users
  */
 class InformationValidator extends FormRequest

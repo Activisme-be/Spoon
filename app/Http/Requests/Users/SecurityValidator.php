@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Users;
 
-use Illuminate\Foundation\Http\FormRequest;
 use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class SecurityValidator.

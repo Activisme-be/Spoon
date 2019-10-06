@@ -2,12 +2,12 @@
 
 namespace App\Notifications;
 
+use App\Models\SystemAlert as Alert;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use App\Models\SystemAlert as Alert;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 /**
  * Class SystemAlert.

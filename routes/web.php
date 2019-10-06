@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\TwoFactorResetController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\ResetTwoFactorController;
-use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Auth\PasswordSecurityController;
+use App\Http\Controllers\Auth\TwoFactorResetController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Users\AccountController;
 
 /*
 |--------------------------------------------------------------------------

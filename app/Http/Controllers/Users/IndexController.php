@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Users;
 
-use Gate;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\InformationValidator;
 use App\Models\User;
-use Illuminate\Support\Str;
+use App\Notifications\LoginCreated;
+use Gate;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Notifications\LoginCreated;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Contracts\Support\Renderable;
-use App\Http\Requests\Users\InformationValidator;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 /**

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Exports\AuditLogsExport;
-use Spatie\Activitylog\Models\Activity;
+use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 /**

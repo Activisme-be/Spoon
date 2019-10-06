@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Login;
+use Illuminate\Http\Request;
 
 class LogSuccessfulLogin
 {
