@@ -7,6 +7,10 @@ Maar hou er rekening mee dat we geen ondersteuning bieden aan mensen die geen li
 
 Kort samengevat: Als je deze template gebruikt sta je alleen voor. 
 
+### Documentatie
+
+Alle nodig documentatie voor Spoon kan [hier](https://activisme-be.github.io/Spoon-documentatie/) bekeken worden.
+
 ## Installatie 
 
 ### Laravel app
