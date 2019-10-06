@@ -5,7 +5,7 @@ Spoon is een laravel template voor onze projecten waar alleen RVB leden op moete
 Indien je geen develoiper van de organisatie bent kun je deze template gebruiken. 
 Maar hou er rekening mee dat we geen ondersteuning bieden aan mensen die geen lid zijn van onze organisatie. 
 
-Kort samengevat: Als je deze template gebruik sta je alleen voor. 
+Kort samengevat: Als je deze template gebruikt sta je alleen voor. 
 
 ## Installatie 
 
