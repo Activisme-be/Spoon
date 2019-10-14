@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Validator as ValidatorInstance;
 
 /**
  * Class RegisterController
@@ -50,10 +51,10 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data The given data from the form.
-     * @return Validator
+     * @param  array $data The given data from the form.
+     * @return \Illuminate\Contracts\Validation\Validator|ValidatorInstance
      */
-    protected function validator(array $data): Validator
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'voornaam' => ['required', 'string', 'max:255'],
