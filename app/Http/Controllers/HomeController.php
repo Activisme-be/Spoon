@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function welcome(): Renderable
     {
-        return view('auth.login');
+        return view('welcome');
     }
 
     /**
