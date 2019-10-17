@@ -61,9 +61,9 @@
                                         <span class="badge badge-warning"><i class="fe fe-lock mr-1"></i> non-actief</span>
                                     @else {{-- The user is active in the application --}}
                                         @if ($user->isOnline())
-                                            <span class="badge badge-success">Online</span>
+                                            <span class="badge badge-online">Online</span>
                                         @else
-                                            <span class="badge badge-danger">Offline</span>
+                                            <span class="badge badge-offline">Offline</span>
                                         @endif
                                     @endif
                                 </td> {{-- // End status indicator --}}
