@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\ConfirmsPasswords;
 /**
  * Class ConfirmPasswordController
  *
- * This controller is responsible for handling the password confirmations
- * and uses a simple trait to include this behaviour. You're free to
- * explore this trait and override any methods you wish to tweak.
+ * This controller is responsible for handling password confirmations and
+ * uses a simple trait to include the behavior. You're free to explore
+ * this trait and override any functions that require customization.
  *
  * @package App\Http\Controllers\Auth
  */
