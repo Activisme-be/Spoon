@@ -15,7 +15,7 @@
         "cybercog/laravel-ban": "^4.1",
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
-        "laravel/framework": "^6.0",
+        "laravel/framework": "^6.3",
         "laravel/tinker": "^1.0",
         "laravolt/avatar": "^3.0",
         "maatwebsite/excel": "^3.1",
