@@ -1,5 +1,5 @@
 ---
-name: "📚 Documentation Issue"
+name: "Documentation Issue"
 about: 'For documentation issues, open a pull request at https://github.com/Activisme-be/Spoon-documentatie'
 
 ---
