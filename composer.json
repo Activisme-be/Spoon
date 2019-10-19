@@ -27,8 +27,8 @@
         "watson/active": "^4.0"
     },
     "require-dev": {
-        "facade/ignition": "^1.4",
         "barryvdh/laravel-debugbar": "^3.2",
+        "facade/ignition": "^1.4",
         "friendsofphp/php-cs-fixer": "^2.14",
         "fzaninotto/faker": "^1.4",
         "laravel/telescope": "^2.0",
@@ -36,7 +36,8 @@
         "nunomaduro/collision": "^3.0",
         "nunomaduro/phpinsights": "^1.7",
         "phpunit/phpunit": "^8.0",
-        "sensiolabs/security-checker": "^6.0"
+        "sensiolabs/security-checker": "^6.0",
+        "wnx/laravel-stats": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
