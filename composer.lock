@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a4edda1ee99b24d77953d9b3a97701c",
+    "content-hash": "1a91fb70d8dfdaf1ce1dbbaa951c8e18",
     "packages": [
         {
             "name": "actb/laravel-form-helpers",
@@ -9430,6 +9430,69 @@
                 "validate"
             ],
             "time": "2019-08-24T08:43:50+00:00"
+        },
+        {
+            "name": "wnx/laravel-stats",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefanzweifel/laravel-stats.git",
+                "reference": "1b3c60bfbf81233973cbc2a63be4e6f83b2d6205"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/1b3c60bfbf81233973cbc2a63be4e6f83b2d6205",
+                "reference": "1b3c60bfbf81233973cbc2a63be4e6f83b2d6205",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.8.0|^6.0",
+                "illuminate/support": "~5.8.0|^6.0",
+                "php": ">=7.2.0",
+                "phploc/phploc": "~4.0|~5.0",
+                "symfony/finder": "~3.3|~4.0"
+            },
+            "require-dev": {
+                "laravel/browser-kit-testing": "~2.0|~3.0|~4.0|~5.0",
+                "laravel/dusk": "~3.0|~4.0|~5.0",
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "^3.8",
+                "phpunit/phpunit": "6.*|7.*|8.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Wnx\\LaravelStats\\StatsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wnx\\LaravelStats\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Zweifel",
+                    "email": "hello@stefanzweifel.io",
+                    "homepage": "https://stefanzweifel.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Get insights about your Laravel Project",
+            "homepage": "https://github.com/stefanzweifel/laravel-stats",
+            "keywords": [
+                "laravel",
+                "statistics",
+                "stats",
+                "wnx"
+            ],
+            "time": "2019-09-01T14:18:49+00:00"
         }
     ],
     "aliases": [],
