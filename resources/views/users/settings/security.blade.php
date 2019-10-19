@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Account beveiliging'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $currentUser */
+    @endphp
+
    <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">{{ $currentUser->name }}</h1>
@@ -13,7 +17,7 @@
             <div class="col-3"> {{-- sidenav --}}
                 @include('users.components.settings-sidenav')
             </div> {{-- /// END sidenav --}}
-        
+
             <div class="col-9"> {{-- Content --}}
                 <form method="POST" action="{{ route('account.settings.security') }}" class="card border-0 shadow-sm card-body">
                     @csrf               {{-- Form field protection --}}
@@ -56,5 +60,5 @@
                 @includeWhen (config('platform.2fa.enabled'), 'users.settings.2fa')
             </div> {{-- /// END content --}}
         </div>
-    </div> 
+    </div>
 @endsection

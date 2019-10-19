@@ -1,6 +1,10 @@
 @extends('layouts.auth', ['title' => 'Reset wachtwoord'])
 
 @section('content')
+    @php
+        /** @var \Illuminate\Support\Collection $errors */
+    @endphp
+
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-md-center h-100">

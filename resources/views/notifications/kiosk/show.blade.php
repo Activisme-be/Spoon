@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Systeem notificaties'])
 
 @section('content')
+    @php
+        /** @var \Illuminate\Notifications\DatabaseNotification $notification */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Systeem notificaties</h1>
@@ -67,7 +71,7 @@
                                     <td class="float-left td-key">
                                         @foreach ($notification->creator->roles as $function) {{-- User function look --}}
                                             {{ $function->name }}{{ (! $loop->last) ? ',' : '' }}
-                                        @endforeach {{-- /// END user function loop --}} 
+                                        @endforeach {{-- /// END user function loop --}}
                                     </td>
                                 </tr>
                             </tbody>

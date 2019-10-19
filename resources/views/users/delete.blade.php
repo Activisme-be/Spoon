@@ -1,6 +1,10 @@
 @extends ('layouts.app', ['title' => "Verwijder {$user->name}"])
 
 @section ('content')
+    @php
+        /** @var \App\Models\User $user */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Portaal logins</h1>

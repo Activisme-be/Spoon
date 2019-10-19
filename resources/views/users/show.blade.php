@@ -1,11 +1,17 @@
 @extends ('layouts.app', ['title' => $user->name])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $currentUser */
+        /** @var \App\Models\User $user */
+        /** @var \Spatie\Permission\Models\Role[] $roles */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Gebruikers</h1>
             <div class="page-subtitle">Informatie omtrent {{ $user->name }}</div>
-        
+
             <div class="page-options d-flex">
                 <a href="{{ route('users.index') }}" class="btn btn-secondary">
                     <i class="fe fe-list mr-1"></i> Overzicht
@@ -18,8 +24,8 @@
         <div class="row">
             <div class="col-md-3"> {{-- Sidenav --}}
                 @include ('users.components.sidenav', ['user' => $user])
-            </div> {{-- /// END sidenav --}}        
-        
+            </div> {{-- /// END sidenav --}}
+
             <div class="col-9"> {{-- Page content --}}
                 <form method="POST" action="{{ route('users.update', $user) }}" class="card border-0 shadow-sm card-body">
                     @csrf               {{-- Form field protection --}}

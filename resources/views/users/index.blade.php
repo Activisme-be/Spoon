@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Gebruikers'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User[]&Illuminate\Pagination\Paginator $users */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Gebruikers</h1>

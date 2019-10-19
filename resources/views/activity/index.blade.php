@@ -1,6 +1,11 @@
 @extends('layouts.app', ['title' => 'Audit'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $currentUser */
+        /** @var \Spatie\Activitylog\Models\Activity[]&\Illuminate\Pagination\Paginator $logs */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Activiteit audit</h1>

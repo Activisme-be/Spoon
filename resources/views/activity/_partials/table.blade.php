@@ -1,3 +1,7 @@
+@php
+    /** @var \Spatie\Activitylog\Models\Activity[]&\Illuminate\Pagination\Paginator $logs */
+@endphp
+
 <div class="table-responsive">
     <table class="table table-sm mb-0 table-hover">
         <thead>

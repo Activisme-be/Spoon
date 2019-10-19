@@ -1,6 +1,10 @@
 @extends ('layouts.app', ['title' => 'Geblokeerde gebruiker'])
 
 @section ('content')
+    @php
+        /** @var \Cog\Laravel\Ban\Models\Ban $banInfo */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="row">
             <div class="col-md-12">

@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Account informatie'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $currentUser */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">{{ $currentUser->name }}</h1>
@@ -13,7 +17,7 @@
             <div class="col-3"> {{-- Sidebar --}}
                 @include ('users.components.settings-sidenav')
             </div> {{-- /// END sidebar --}}
-        
+
             <div class="col-9"> {{-- Content --}}
                 <form method="POST" action="{{ route('account.settings.info') }}" class="card border-0 shadow-sm card-body">
                     @csrf                {{-- Form field protection --}}
@@ -35,7 +39,7 @@
                             <input type="text" placeholder="Uw achternaam" class="form-control @error('achternaam', 'is-invalid')" @input('achternaam')>
                             @error('achternaam')
                         </div>
-                    
+
                         <div class="form-group col-12">
                             <label for="inputEmail">Email adres <span class="text-danger">*</span></label>
                             <input type="email" placeholder="Uw email adres" class="form-control @error('email', 'is-invalid')" @input('email')>

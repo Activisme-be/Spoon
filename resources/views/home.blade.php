@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $currentUser */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <div class="page-title">{{ config('app.name') }}</div>

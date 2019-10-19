@@ -1,11 +1,15 @@
 @extends('layouts.app', ['title' => "Blokkeer {$userEntity->name}"])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $userEntity */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Gebruikers</h1>
             <div class="page-subtitle">Deactiveer login voor {{ $userEntity->name }}</div>
-        
+
             <div class="page-options d-flex">
                 <a href="{{ route('users.index') }}" class="btn btn-secondary">
                     <i class="fe fe-list mr-1"></i> Overzicht
@@ -55,7 +59,7 @@
                             <a href="{{ route('users.index') }}" class="btn btn-light">Annuleer</a>
                         </div>
                     </div>
-                </form> 
+                </form>
             </div> {{-- /// END content --}}
         </div>
     </div>

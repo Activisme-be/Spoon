@@ -1,3 +1,8 @@
+@php
+    /** @var \App\Models\User $currentUser */
+    /** @var \App\Models\User $user */
+@endphp
+
 <div class="card mb-3">
     <div class="card-header">
         <i class="fe fe-list mr-2"></i> Gegevens

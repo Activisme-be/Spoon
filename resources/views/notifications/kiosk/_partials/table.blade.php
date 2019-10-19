@@ -1,3 +1,7 @@
+@php
+    /** @var \Illuminate\Notifications\DatabaseNotification[]&\Illuminate\Pagination\Paginator $notifications */
+@endphp
+
 <div class="table-responsive">
     <table class="table table-hover table-sm mb-2">
         <thead>
@@ -40,5 +44,5 @@
                 </tr>
             @endforelse {{-- /// END notification loop --}}
         </tbody>
-    </table> 
+    </table>
 </div>

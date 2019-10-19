@@ -1,3 +1,7 @@
+@php
+    /** @var \App\Models\User $currentUser */
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

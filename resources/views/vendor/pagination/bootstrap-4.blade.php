@@ -1,3 +1,7 @@
+@php
+    /** @var \Illuminate\Pagination\Paginator $paginator */
+@endphp
+
 @if ($paginator->hasPages())
     <ul class="pagination mt-3 mb-0" role="navigation">
         {{-- Previous Page Link --}}

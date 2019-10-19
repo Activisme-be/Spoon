@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => 'Systeem notificaties'])
 
 @section('content')
+    @php
+        /** @var \Illuminate\Notifications\DatabaseNotification[]&\Illuminate\Pagination\Paginator $notifications */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Systeem notificaties</h1>

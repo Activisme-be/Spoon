@@ -1,3 +1,7 @@
+@php
+    /** @var \App\Models\User $currentUser */
+@endphp
+
 <a class="nav-link {{ active('kiosk.dashboard') }}" href="{{ route('kiosk.dashboard') }}">
     <i class="fe fe-home mr-1 text-secondary"></i> Dashboard
 </a>

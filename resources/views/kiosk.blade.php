@@ -1,6 +1,20 @@
+@php
+use Illuminate\Notifications\DatabaseNotification;
+@endphp
+
 @extends('layouts.app', ['title' => 'Kiosk dashboard'])
 
 @section('content')
+    @php
+        /** @see \App\Composers\KioskComposer */
+        /** @var \stdClass $audit */
+        /** @var \stdClass $notifications */
+        /** @var \stdClass $users */
+
+        /** @var \Illuminate\Notifications\DatabaseNotification[]&\Illuminate\Pagination\Paginator $alerts */
+        /** @var \Spatie\Activitylog\Models\Activity[]&\Illuminate\Pagination\Paginator $logs */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <div class="page-title">{{ config('app.name') }} - Kiosk</div>
@@ -67,7 +81,7 @@
                 <div class="col-12"> {{-- Short activity overview --}}
                     <div class="card card-body border-0 shadow-sm @if ($notifications->total > 0) mb-4 @endif">
                         <h6 class="border-bottom border-gray pb-1 mb-3">
-                            <i class="fe fe-brand fe-activity mr-1"></i> Recente activiteit 
+                            <i class="fe fe-brand fe-activity mr-1"></i> Recente activiteit
 
                             @if ($audit->total >= 7) {{-- More than 7 logged activity logs so display the overview link --}}
                                 <a href="{{ route('audit.overview') }}" class="text-decoration-none float-right small text-muted">
@@ -92,7 +106,7 @@
                                     <i class="fe fe-plus mr-1"></i> Notificatie verzenden
                                 </a>
 
-                                @if ($notifications->total >= 7) 
+                                @if ($notifications->total >= 7)
                                     <a href="{{ route('alerts.overview') }}" class="small ml-2 text-decoration-none text-muted">
                                         <i class="fe fe-list mr-1"></i> Overzicht
                                     </a>

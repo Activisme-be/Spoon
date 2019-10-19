@@ -1,6 +1,11 @@
 @extends ('layouts.app', ['title' => 'Activiteiten log'])
 
 @section('content')
+    @php
+        /** @var \App\Models\User $user */
+        /** @var Spatie\Activitylog\Models\Activity[]&\Illuminate\Pagination\Paginator $activities */
+    @endphp
+
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Gebruikers</h1>
@@ -13,7 +18,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container-fluid pb-3">
         <div class="row">
             <div class="col-3"> {{-- Sidebar --}}

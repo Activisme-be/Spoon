@@ -1,6 +1,10 @@
+@php
+    /** @var \App\Models\User $currentUser */
+@endphp
+
 <div class="card mt-3 border-0 shadow-sm card-body">
     <h6 class="border-bottom border-gray pb-1 mb-3">2FA authenticatie</h6>
-        
+
     @if (empty($currentUser->passwordSecurity))
         @if (session('error'))
             <div class="alert alert-danger border-0" role="alert">{{ session('error') }}</div>
@@ -21,12 +25,12 @@
             <p class="card-text">
                 Om 2FA in te schakelen op je account, voelt u de volgende stappen uit:
             </p>
-                
+
             <ol class="list-unstyled mb-1 font-weight-bold">
                 <li>1. Klik op de "Activeer 2FA" knop, Voor het genereren van een QR code met de unieke code voor je account.</li>
                 <li>2. Verifieer de OTP van de Google Authenticator Mobiele App</li>
             </ol>
-            
+
             <div class="form-row">
                 <div class="form-group col-12">
                 </div>
@@ -76,7 +80,7 @@
         <p class="card-text text-success mb-3">
             <span class="font-weight-bold mr-2"><i class="fe fe-info mr-1"></i> Info:</span>
             2FA is momenteel geactiveerd op uw account.
-        </p> 
+        </p>
 
         <p class="card-text">
             Indien u 2FA wilt deactivaren op jouw account. Kan dat door jouw huidg wachtwoord op te geven ter controle.
@@ -98,6 +102,6 @@
                     </button>
                 </div>
             </div>
-        </form>  
-    @endif   
-</div>   
+        </form>
+    @endif
+</div>
