@@ -46,7 +46,7 @@
 
 
                                 <div class="form-group no-margin">
-                                    <button type="submit" class="btn btn-orange text-white btn-block">
+                                    <button type="submit" class="btn btn-secondary text-white btn-block">
                                         Bevestig wachtwoord
                                     </button>
                                 </div>
