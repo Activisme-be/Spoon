@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class UserRepository.
+ * Class UserRepository
+ * 
+ * @package App\Repositories
  */
 class UserRepository extends Authenticatable
 {

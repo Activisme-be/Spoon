@@ -4,6 +4,8 @@ namespace App\Traits;
 
 /**
  * Trait activityLog logging all the internal handlings from users in the application.
+ *
+ * @package App\Traits
  */
 trait ActivityLog
 {

@@ -13,7 +13,9 @@ use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Class User.
+ * Class User
+ *
+ * @package App\Models
  */
 class User extends UserRepository implements BannableContract
 {

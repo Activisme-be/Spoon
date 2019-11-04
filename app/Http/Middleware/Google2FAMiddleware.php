@@ -6,7 +6,9 @@ use App\Repositories\TwoFactorAuth\Authenticator;
 use Closure;
 
 /**
- * Class Google2FAMiddleware.
+ * Class Google2FAMiddleware
+ *
+ * @package App\Http\Middleware
  */
 class Google2FAMiddleware
 {

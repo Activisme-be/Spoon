@@ -7,7 +7,9 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Auth\Guard;
 
 /**
- * Class ForbidBannedUser.
+ * Class ForbidBannedUser
+ *
+ * @package App\Http\Middleware
  */
 class ForbidBannedUser
 {

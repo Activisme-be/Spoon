@@ -10,7 +10,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 /**
- * Class SystemAlert.
+ * Class SystemAlert
+ *
+ * @package App\Notifications
  */
 class SystemAlert extends Notification implements ShouldQueue
 {

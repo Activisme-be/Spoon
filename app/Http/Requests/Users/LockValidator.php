@@ -7,7 +7,9 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class LockValidator.
+ * Class LockValidator
+ *
+ * @package App\Http\Requests\Users
  */
 class LockValidator extends FormRequest
 {

@@ -6,7 +6,9 @@ use PragmaRX\Google2FALaravel\Exceptions\InvalidSecretKey;
 use PragmaRX\Google2FALaravel\Support\Authenticator as BaseAuthenticator;
 
 /**
- * Class Authenticator.
+ * Class Authenticator
+ *
+ * @package App\Repositories\TwoFactorAuth
  */
 class Authenticator extends BaseAuthenticator
 {

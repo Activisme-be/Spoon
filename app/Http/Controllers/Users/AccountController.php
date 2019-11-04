@@ -10,7 +10,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Class AccountController.
+ * Class AccountController
+ *
+ * @package App\Http\Controllers\Users
  */
 class AccountController extends Controller
 {

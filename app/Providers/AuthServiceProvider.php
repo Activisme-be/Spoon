@@ -7,7 +7,9 @@ use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 /**
- * Class AuthServiceProvider.
+ * Class AuthServiceProvider
+ *
+ * @package App\Providers
  */
 class AuthServiceProvider extends ServiceProvider
 {

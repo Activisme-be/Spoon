@@ -10,7 +10,9 @@ use Spatie\Activitylog\Models\Activity;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 /**
- * Class ActivityController.
+ * Class ActivityController
+ *
+ * @package App\Http\Controllers
  */
 class ActivityController extends Controller
 {

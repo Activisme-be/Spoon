@@ -5,7 +5,9 @@ namespace App\Http\Requests\Alerts;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class SystemNotificationRequest.
+ * Class SystemNotificationRequest
+ *
+ * @package App\Http\Requests\Alerts
  */
 class SystemNotificationRequest extends FormRequest
 {

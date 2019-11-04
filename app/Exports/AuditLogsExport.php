@@ -13,9 +13,11 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use Spatie\Activitylog\Models\Activity;
 
 /**
- * Class AditLogsExport
- * ----
+ * Class AuditLogsExport
+ *
  * Method for exporting the internal application logs to an excel file (.xls).
+ *
+ * @package App\Exports
  */
 class AuditLogsExport implements WithHeadings, ShouldAutoSize, WithEvents, WithMapping, FromCollection
 {

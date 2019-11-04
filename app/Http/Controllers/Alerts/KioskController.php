@@ -10,7 +10,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Class KioskController.
+ * Class KioskController
+ *
+ * @package App\Http\Controllers\Alerts
  */
 class KioskController extends Controller
 {

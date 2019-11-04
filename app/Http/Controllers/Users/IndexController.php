@@ -16,7 +16,9 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 /**
- * Class IndexController.
+ * Class IndexController
+ *
+ * @package App\Http\Controllers\Users
  */
 class IndexController extends Controller
 {

@@ -6,7 +6,9 @@ use App\Models\User;
 use Closure;
 
 /**
- * Class PortalMiddleware.
+ * Class PortalMiddleware
+ *
+ * @package App\Http\Middleware
  */
 class PortalMiddleware
 {

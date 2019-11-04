@@ -7,6 +7,8 @@ use Illuminate\View\View;
 
 /**
  * Class AlertComposer
+ *
+ * @package App\Composers
  */
 class AlertComposer
 {

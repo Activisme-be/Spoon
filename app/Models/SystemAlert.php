@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class SystemAlert.
+ * Class SystemAlert
+ *
+ * @package App\Models
  */
 class SystemAlert extends Model
 {

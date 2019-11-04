@@ -7,7 +7,9 @@ use Illuminate\View\View;
 use stdClass;
 
 /**
- * Class KioskComposer.
+ * Class KioskComposer
+ *
+ * @package App\Composers
  */
 class KioskComposer
 {

@@ -6,7 +6,9 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\View\View;
 
 /**
- * Class LayoutComposer.
+ * Class LayoutComposer
+ *
+ * @package App\Composers
  */
 class LayoutComposer
 {

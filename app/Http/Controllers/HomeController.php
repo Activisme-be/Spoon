@@ -8,8 +8,10 @@ use Spatie\Activitylog\Models\Activity;
 
 /**
  * Class HomeController
- * ----
+ *
  * Controllers that handles the application home pages.
+ *
+ * @package App\Http\Controllers
  */
 class HomeController extends Controller
 {

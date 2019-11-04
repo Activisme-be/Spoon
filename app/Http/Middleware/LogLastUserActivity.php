@@ -6,7 +6,9 @@ use Closure;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Class LogLastUserActivity.
+ * Class LogLastUserActivity
+ *
+ * @package App\Http\Middleware
  */
 class LogLastUserActivity
 {

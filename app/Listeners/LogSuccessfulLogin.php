@@ -5,6 +5,11 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 
+/**
+ * Class LogSuccessfulLogin
+ *
+ * @package App\Listeners
+ */
 class LogSuccessfulLogin
 {
     /**

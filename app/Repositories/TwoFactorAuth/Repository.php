@@ -10,7 +10,9 @@ use PragmaRX\Google2FALaravel\Google2FA;
 use RuntimeException;
 
 /**
- * Class Repository.
+ * Class Repository
+ *
+ * @package App\Repositories\TwoFactorAuth
  */
 class Repository
 {

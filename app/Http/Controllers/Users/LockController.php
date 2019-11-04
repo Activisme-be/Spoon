@@ -10,7 +10,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 /**
- * Class LockController.
+ * Class LockController
+ *
+ * @package App\Http\Controllers\Users
  */
 class LockController extends Controller
 {

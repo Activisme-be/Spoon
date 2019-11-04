@@ -8,7 +8,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 /**
- * Class LoginCreated.
+ * Class LoginCreated
+ *
+ * @package App\Notifications
  */
 class LoginCreated extends Notification implements ShouldQueue
 {
