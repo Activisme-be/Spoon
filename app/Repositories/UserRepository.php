@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class UserRepository
- * 
+ *
  * @package App\Repositories
  */
 class UserRepository extends Authenticatable
