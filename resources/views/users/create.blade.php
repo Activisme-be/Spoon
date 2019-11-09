@@ -16,7 +16,7 @@
 
     <div class="container-fluid pb-3">
         <div class="card border-0 shadow-sm">
-            <form method="POST" action="{{ route('users.store') }}" class="card-body">
+            <form id="create-form" method="POST" action="{{ route('users.store') }}" class="card-body">
                 @csrf {{-- Form field protection --}}
 
                 <h6 class="border-bottom border-gray pb-1 mb-3">Nieuwe gebruiker toevoegen</h6>
@@ -58,8 +58,8 @@
                 <hr class="mt-0">
             </form>
             <div class="card-footer bg-card-footer border-top-0">
-                <button type="submit" class="btn btn-success">Opslaan</button>
-                <button type="reset" class="btn btn-light">Reset</button>
+                <button form="create-form" type="submit" class="btn btn-success">Opslaan</button>
+                <button form="create-form" type="reset" class="btn btn-light">Reset</button>
             </div>
         </div>
     </div>
