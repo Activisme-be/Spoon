@@ -44,7 +44,7 @@
                 <hr class="mt-0">
 
                 <div class="form-row">
-                    <div class="form-group col-12">
+                    <div class="form-group col-12 mb-0">
                         <label for="permissions">Permissie functies <span class="text-danger">*</span></label>
 
                         <select @input('roles[]') class="custom-select @error('roles[]', 'is-invalid')" multiple>
@@ -54,8 +54,6 @@
                         @error('roles[]') {{-- Validation error view partial --}}
                     </div>
                 </div>
-
-                <hr class="mt-0">
             </form>
             <div class="card-footer bg-card-footer border-top-0">
                 <button form="create-form" type="submit" class="btn btn-success">Opslaan</button>
