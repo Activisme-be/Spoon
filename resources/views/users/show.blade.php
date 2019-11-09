@@ -70,11 +70,11 @@
                                     <label for="permissions">Permissie functies <span class="text-danger">*</span></label>
 
                                     <select @input('roles[]') class="custom-select @error('roles[]', 'is-invalid')" multiple>
-                                    @foreach ($roles as $role) {{-- Permission loop --}}
-                                    <option value="{{ $role->name }}" @if ($currentUser->hasRole($role->name)) selected @endif>
-                                        {{ ucfirst($role->name) }}
-                                    </option>
-                                    @endforeach {{-- /// END permission loop --}}
+                                        @foreach ($roles as $role) {{-- Permission loop --}}
+                                            <option value="{{ $role->name }}" @if ($currentUser->hasRole($role->name)) selected @endif>
+                                                {{ ucfirst($role->name) }}
+                                            </option>
+                                        @endforeach {{-- /// END permission loop --}}
                                     </select>
 
                                     @error('roles[]') {{-- Validation error view partial --}}
