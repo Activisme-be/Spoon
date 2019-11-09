@@ -25,37 +25,39 @@
             </div> {{-- /// END sidenav --}}
 
             <div class="col-md-9">
-                <form method="POST" action="{{ route('users.destroy', $user) }}" class="card border-0 shadow-sm card-body">
-                    @csrf {{-- Form field protection --}}
-                    @method ('DELETE') {{-- HTTP method spoofing --}}
+                <div class="card shadow-sm border-0">
+                    <form id="delete-form" method="POST" action="{{ route('users.destroy', $user) }}" class="card-body">
+                        @csrf {{-- Form field protection --}}
+                        @method ('DELETE') {{-- HTTP method spoofing --}}
 
-                    <h6 class="border-bottom border-gray pb-1 mb-3">Login verwijderen van <strong>{{ $user->name }}</strong></h6>
-                    @include ('flash::message') {{-- Flash session view partial --}}
+                        <h6 class="border-bottom border-gray pb-1 mb-3">Login verwijderen van <strong>{{ $user->name }}</strong></h6>
+                        @include ('flash::message') {{-- Flash session view partial --}}
 
-                    <p class="card-text text-danger">
-                        <i class="fe fe-alert-triangle mr-1"></i> U staat op het punt om de login van {{ $user->name }} te verwijderen.
-                    </p>
+                        <p class="card-text text-danger">
+                            <i class="fe fe-alert-triangle mr-1"></i> U staat op het punt om de login van {{ $user->name }} te verwijderen.
+                        </p>
 
-                    <p class="card-title">
-                        Bij het verwijderen van de login. Worden de vrijwilligersploegen waar {{ $user->name }} leider van is,
-                        losgekoppeld in de applicatie. Als ook worden alle gegevens van de personen genormaliseerd of verwijderd.
-                        Vandaar dat wij u vragen om het onderstaande formulier in te vullen als controle.
-                    </p>
+                        <p class="card-title">
+                            Bij het verwijderen van de login. Worden de vrijwilligersploegen waar {{ $user->name }} leider van is,
+                            losgekoppeld in de applicatie. Als ook worden alle gegevens van de personen genormaliseerd of verwijderd.
+                            Vandaar dat wij u vragen om het onderstaande formulier in te vullen als controle.
+                        </p>
 
-                    <hr class="mt-0">
+                        <hr class="mt-0">
 
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <input type="password" placeholder="Uw wachtwoord ter bevestiging" class="form-control @error('wachtwoord', 'is-invalid')" @input('wachtwoord')>
-                            @error('wachtwoord')
+                        <div class="form-row">
+                            <div class="form-group col-6 mb-0">
+                                <input type="password" placeholder="Uw wachtwoord ter bevestiging" class="form-control @error('wachtwoord', 'is-invalid')" @input('wachtwoord')>
+                                @error('wachtwoord')
+                            </div>
                         </div>
+                    </form>
 
-                        <div class="form-group col-12 mb-0">
-                            <button type="submit" class="btn btn-danger">Verwijder</button>
-                            <a href="{{ route('users.index') }}" class="btn btn-light">Annuleer</a>
-                        </div>
+                    <div class="card-footer border-top-0 bg-card-footer">
+                        <button form="delete-form" type="submit" class="btn btn-danger">Verwijder</button>
+                        <a href="{{ route('users.index') }}" class="btn btn-light">Annuleer</a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
