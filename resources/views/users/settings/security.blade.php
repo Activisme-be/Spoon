@@ -19,43 +19,41 @@
             </div> {{-- /// END sidenav --}}
 
             <div class="col-9"> {{-- Content --}}
-                <form method="POST" action="{{ route('account.settings.security') }}" class="card border-0 shadow-sm card-body">
-                    @csrf               {{-- Form field protection --}}
-                    @form($currentUser) {{-- Bind the authenticated user data to the form --}}
-                    @method ('PATCH')   {{-- HTTP method spoofing --}}
+                <div class="card shadow-sm border-0">
+                    <form method="POST" id="security-form" action="{{ route('account.settings.security') }}" class="card-body">
+                        @csrf               {{-- Form field protection --}}
+                        @form($currentUser) {{-- Bind the authenticated user data to the form --}}
+                        @method ('PATCH')   {{-- HTTP method spoofing --}}
 
-                    <h6 class="border-bottom border-gray pb-1 mb-3">Beveiligings instellingen</h6>
-                    @include ('flash::message') {{-- Flash session view partial --}}
+                        <h6 class="border-bottom border-gray pb-1 mb-3">Beveiligings instellingen</h6>
+                        @include ('flash::message') {{-- Flash session view partial --}}
 
-                    <div class="form-row">
-                        <div class="form-group col-12">
-                            <label for="inputCurrent">Huidig wachtwoord <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control @error('huidig_wachtwoord', 'is-invalid')" placeholder="Uw huidig wachtwoord" @input('huidig_wachtwoord')>
-                            @error('huidig_wachtwoord')
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="inputCurrent">Huidig wachtwoord <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control @error('huidig_wachtwoord', 'is-invalid')" placeholder="Uw huidig wachtwoord" @input('huidig_wachtwoord')>
+                                @error('huidig_wachtwoord')
+                            </div>
+
+                            <div class="form-group col-6 mb-0">
+                                <label for="inputWachtwoord">Nieuw wachtwoord <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control @error('wachtwoord', 'is-invalid')" placeholder="Uw nieuw wachtwoord" @input('wachtwoord')>
+                                @error('wachtwoord')
+                            </div>
+
+                            <div class="form-group col-6 mb-0">
+                                <label for="inputBevestiging">Herhaal wachtwoord <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control @error('wachtwoord_confirmation', 'is-invalid')" placeholder="Herhaal nieuw wachtwoord" @input('wachtwoord_confirmation')>
+                                @error('wachtwoord_confirmation')
+                            </div>
                         </div>
+                    </form>
 
-                        <div class="form-group col-6">
-                            <label for="inputWachtwoord">Nieuw wachtwoord <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control @error('wachtwoord', 'is-invalid')" placeholder="Uw nieuw wachtwoord" @input('wachtwoord')>
-                            @error('wachtwoord')
-                        </div>
-
-                        <div class="form-group col-6">
-                            <label for="inputBevestiging">Herhaal wachtwoord <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control @error('wachtwoord_confirmation', 'is-invalid')" placeholder="Herhaal nieuw wachtwoord" @input('wachtwoord_confirmation')>
-                            @error('wachtwoord_confirmation')
-                        </div>
+                    <div class="card-footer bg-card-footer border-top-0">
+                        <button type="submit" form="security-form" class="btn btn-success">Opslaan</button>
+                        <button type="reset" form="security-form" class="btn btn-light">Reset</button>
                     </div>
-
-                    <hr class="mt-0">
-
-                    <div class="form-row">
-                        <div class="form-group col-12 mb-0">
-                            <button type="submit" class="btn btn-success">Opslaan</button>
-                            <button type="reset" class="btn btn-light">Reset</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
 
                 @includeWhen (config('platform.2fa.enabled'), 'users.settings.2fa')
             </div> {{-- /// END content --}}
