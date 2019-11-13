@@ -53,11 +53,7 @@
                         </div>
                     </form>
 
-<<<<<<< HEAD
-                    <div class="card-footer border-top-0 bg-card-footer">
-=======
                     <div class="card-footer bg-card-footer border-top-0">
->>>>>>> d3c36b4f74832f3fb5f7ba51c1668a2dcab69c74
                         <button form="delete-form" type="submit" class="btn btn-danger">Verwijder</button>
                         <a href="{{ route('users.index') }}" class="btn btn-light">Annuleer</a>
                     </div>
