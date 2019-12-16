@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.0",
+        "php": "^7.4",
         "actb/laravel-form-helpers": "^1.5.1",
         "actb/laravel-validation-rules": "dev-master",
         "bacon/bacon-qr-code": "^2.0",
