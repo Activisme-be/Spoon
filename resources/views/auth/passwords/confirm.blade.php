@@ -30,7 +30,7 @@
                                     <label for="password">Password
                                         @if (Route::has('password.request'))
                                             <a class="float-right" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
+                                                {{ __('Wachtwoord vergeten?') }}
                                             </a>
                                         @endif
                                     </label>
