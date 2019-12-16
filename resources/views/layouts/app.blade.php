@@ -93,11 +93,8 @@
 
         <div class="nav-scroller bg-white shadow-sm">
             <nav class="nav nav-underline">
-                @if ($currentUser->can('on-application', auth()->user()))
-                    @include ('layouts._navigation.application')
-                @elseif ($currentUser->can('on-kiosk', auth()->user()))
-                    @include ('layouts._navigation.kiosk')
-                @endif
+                @includeWhen ($currentUser->can('on-application', auth()->user()), 'layouts._navigation.application')
+                @includeWhen ($currentUser->can('on-kiosk', auth()->user()), 'layouts._navigation.kiosk')
             </nav>
         </div>
 
