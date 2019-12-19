@@ -67,11 +67,11 @@ class SystemAlert extends Notification implements ShouldQueue
     public function toArray(): array
     {
         return [
-            'sender'        => $this->creator,
-            'title'         => $this->notificationData->title,
-            'message'       => $this->notificationData->message,
-            'action_url'    => $this->notificationData->action_url,
-            'action_text'   => $this->notificationData->action_title,
+            'sender' => $this->creator,
+            'title' => $this->notificationData->title,
+            'message' => $this->notificationData->message,
+            'action_url' => $this->notificationData->action_url,
+            'action_text' => $this->notificationData->action_title,
         ];
     }
 }

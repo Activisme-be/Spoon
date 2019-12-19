@@ -30,7 +30,8 @@ class Authenticator extends BaseAuthenticator
     }
 
     /**
-     * Determine wheter we can display the 2FA recovery view or not.
+     * Determine whether we can display the 2FA recovery view or not.
+     *
      * @return bool
      */
     public function canDisplayRecoveryView(): bool

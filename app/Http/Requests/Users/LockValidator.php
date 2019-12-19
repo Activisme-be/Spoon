@@ -31,7 +31,7 @@ class LockValidator extends FormRequest
     public function rules(): array
     {
         return [
-            'reden'      => ['required', 'string'],
+            'reden' => ['required', 'string'],
             'wachtwoord' => ['required', 'string', new MatchUserPassword($this->user())],
         ];
     }
