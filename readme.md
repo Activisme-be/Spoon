@@ -59,9 +59,9 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 ### Framework sync
 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
-De laatste synchronizatie is uitgevoerd op 19/12/2019. 
+De laatste synchronizatie is uitgevoerd op 26/12/2019. 
 
-Met als laatste commit: [use class name to be consistent with web middleware](https://github.com/laravel/laravel/commit/140d4d9b0a4581cec046875361e87c2981b3f9fe)
+Met als laatste commit: [Fix types consistency in database config](https://github.com/laravel/laravel/commit/195faa16cbeabc84b0eb9c9f4227ead762c93575)
 
 ### Licentie 
 Spoon en Larevel zijn vrijgegeven als open-source sofware onder de MIT licentie
