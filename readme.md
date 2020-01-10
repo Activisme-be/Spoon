@@ -61,7 +61,7 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
 De laatste synchronizatie is uitgevoerd op 26/12/2019. 
 
-Met als laatste commit: [Fix types consistency in database config](https://github.com/laravel/laravel/commit/195faa16cbeabc84b0eb9c9f4227ead762c93575)
+Met als laatste commit: [Merge pull request #5196 from laravel/revert-5006-analysis-qxPGgA](https://github.com/laravel/laravel/commit/25c36eb592c57e075acc32a12703005f67c4ec10)
 
 ### Licentie 
 Spoon en Larevel zijn vrijgegeven als open-source sofware onder de MIT licentie
