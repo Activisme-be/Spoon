@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
+use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -37,17 +39,27 @@ class PasswordSecurityController extends Controller
     /**
      * Method for generating the 2Fa secret key.
      *
-     * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
-     * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
-     *
      * @return RedirectResponse
      */
     public function generate2fasecret(): RedirectResponse
     {
-        $this->twoFactorAuthRepository->createSecretKey();
+        $route = redirect()->route('account.security');
 
-        return redirect()->route('account.security')
-            ->with('success', 'De unieke 2FA sleutel is gegenereerd voor uw account. Verifieer de sleutel om 2FA te activeren.');
+        try { // To generate the secret authenticator key.
+            $this->twoFactorAuthRepository->createSecretKey();
+
+            return $route->with('success', 'De unieke 2FA sleutel is gegenereerd voor uw account. Verifieer de sleutel om 2FA te activeren.');
+        } catch (IncompatibleWithGoogleAuthenticatorException $exception) {
+            // Return the user back with an error flash message.
+            // When the authenticator isn't compatible with google authenticator app.
+
+            return $route->with('error', 'De authenticator app is niet compatible met Google Authenticator.');
+        } catch (InvalidCharactersException $exception) {
+            // Return back with an error flash message.
+            // When the authenticator code has invalid characters.
+
+            return $route->with('error', 'The authenticator code bevat invalide karakter.');
+        }
     }
 
     /**
@@ -83,18 +95,15 @@ class PasswordSecurityController extends Controller
      */
     public function disable2fa(Request $request): RedirectResponse
     {
-        $user = auth()->user();
-
-        if (! Hash::check($request->get('current-password'), $user->password)) {
+        if (! Hash::check($request->get('current-password'), $request->user()->password)) {
             return back()->with('error', 'Het gegeven wachtwoord klopt niet met uw huidige wachtwoord. Probeer het opnieuw.');
         }
 
         $validatedData = $request->validate(['current-password' => 'required']);
 
-        // $user->passwordSecurity->update(['google2fa_enable' => false]);
-        $user->passwordSecurity->delete();
+        $request->user()->passwordSecurity->update(['google2fa_enable' => false]);
+        $request->user()->passwordSecurity->delete();
 
-        return redirect()->route('account.security')
-            ->with('success', '2FA is gedeactiveerd.');
+        return redirect()->route('account.security')->with('success', '2FA is gedeactiveerd.');
     }
 }
