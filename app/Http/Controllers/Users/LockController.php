@@ -66,9 +66,11 @@ class LockController extends Controller
     /**
      * Method for deactivating users in the application.
      *
-     * @param  LockValidator $input         The form request class that handles the validation.
-     * @param  User          $userEntity    The database entity from the given user
+     * @param LockValidator $input The form request class that handles the validation.
+     * @param User $userEntity The database entity from the given user
      * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(LockValidator $input, User $userEntity): RedirectResponse
     {
@@ -83,8 +85,10 @@ class LockController extends Controller
     /**
      * Method for activating users in the application.
      *
-     * @param  User $userEntity The database entity from the given user.
+     * @param User $userEntity The database entity from the given user.
      * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(User $userEntity): RedirectResponse
     {
