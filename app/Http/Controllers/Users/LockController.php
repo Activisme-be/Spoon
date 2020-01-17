@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\LockValidator;
 use App\Models\User;
+use App\Notifications\Users\LockNotification;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class LockController
@@ -76,8 +78,12 @@ class LockController extends Controller
     {
         $this->authorize('deactivate-user', $userEntity);
 
-        $userEntity->ban(['comment' => $input->reden]);
-        $this->getAuthenticatedUser()->logActivity($userEntity, 'Gebruikers', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
+        DB::transaction(function () use ($input, $userEntity): void {
+            $userEntity->ban(['comment' => $input->reden]);
+            $input->user()->notify(new LockNotification($input->user()->name));
+
+            $this->getAuthenticatedUser()->logActivity($userEntity, 'Gebruikers', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
+        });
 
         return redirect()->route('users.show', $userEntity);
     }
