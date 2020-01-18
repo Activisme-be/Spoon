@@ -28,7 +28,7 @@ class InformationValidator extends FormRequest
      */
     public function getPatchRules(): array
     {
-        return ['email' => ['required', 'string', 'email', 'max:191', 'unique:users,email,'.$this->user->id]];
+        return ['email' => ['required', 'string', 'email', 'max:191', 'unique:users,email,'.$this->user()->id]];
     }
 
     /**
