@@ -19,7 +19,11 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends UserRepository implements BannableContract
 {
-    use Notifiable, Bannable, HasRoles, ActivityLog, CausesActivity;
+    use Notifiable;
+    use Bannable;
+    use HasRoles;
+    use ActivityLog;
+    use CausesActivity;
 
     /**
      * The attributes that are mass assignable.

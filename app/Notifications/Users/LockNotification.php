@@ -34,7 +34,7 @@ class LockNotification extends Notification implements ShouldQueue
     {
         $appName = config('app.name');
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject('Uw account is tijdelijk gedeactiveerd')
             ->greeting('Geachte,')
             ->line("Via deze weg willen we je laten weten dat je account tijdelijk gedeactiveerd is op {$appName}")

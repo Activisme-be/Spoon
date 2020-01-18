@@ -101,7 +101,7 @@ class IndexController extends Controller
             $user->syncRoles($input->role);
 
             $user->notify((new LoginCreated($input->all()))->delay(now()->addMinute()));
-            (new Controller)->getAuthenticatedUser()->logActivity($user, 'Gebruikers', "Heeft een login aangemaakt voor {$user->name}");
+            (new Controller())->getAuthenticatedUser()->logActivity($user, 'Gebruikers', "Heeft een login aangemaakt voor {$user->name}");
 
             return $user;
         });

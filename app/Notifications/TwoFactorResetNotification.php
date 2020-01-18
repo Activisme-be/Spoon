@@ -38,7 +38,7 @@ class TwoFactorResetNotification extends Notification implements ShouldQueue
     {
         $resetUrl = URL::temporarySignedRoute('2fa.reset', now()->addHour(), ['user' => $notifiable]);
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject('Aanvraag voor het resetten van je 2FA.')
             ->markdown('email.reset-2fa', ['user' => $notifiable, 'resetRoute' => $resetUrl]);
     }

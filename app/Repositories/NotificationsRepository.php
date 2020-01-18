@@ -61,7 +61,7 @@ class NotificationsRepository
 
         return DB::transaction(static function () use ($input): bool {
             $alert = SystemAlert::create($input->all());
-            (new self)->sendOutNotifications($alert);
+            (new self())->sendOutNotifications($alert);
 
             return true;
         });
