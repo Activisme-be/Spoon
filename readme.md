@@ -61,7 +61,7 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
 De laatste synchronizatie is uitgevoerd op 26/12/2019. 
 
-Met als laatste commit: [Add missing full stop for some validation messages (#5205)](https://github.com/laravel/laravel/commit/f121af8985d1dbb665cb9ca4b6a9f7dbb6211a7c)
+Met als laatste commit: [Update laravel mix and sass loader (#5203)](https://github.com/laravel/laravel/commit/9b6d1b14bcbeba1b52a75a48dedc0402b1f08bb5)
 
 ### Licentie 
-Spoon en Larevel zijn vrijgegeven als open-source sofware onder de MIT licentie
+Spoon en Laravel zijn vrijgegeven als open-source sofware onder de MIT licentie
