@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                @includeWhen (config('platform.2fa.enabled'), 'users.settings.2fa')
+                @includeWhen (config('core.2fa.enabled'), 'users.settings.2fa')
             </div> {{-- /// END content --}}
         </div>
     </div>
