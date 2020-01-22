@@ -62,7 +62,7 @@
 
                                 <td> {{-- Status  indicator --}}
                                     @if ($user->isBanned()) {{-- The login is non active in the application --}}
-                                        <span class="badge badge-warning"><i class="fe fe-lock mr-1"></i> non-actief</span>
+                                        <span class="badge badge-deactivated"><i class="fe fe-lock mr-1"></i> non-actief</span>
                                     @else {{-- The user is active in the application --}}
                                         @if ($user->isOnline())
                                             <span class="badge badge-online">Online</span>
