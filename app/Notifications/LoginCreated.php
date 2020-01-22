@@ -51,7 +51,7 @@ class LoginCreated extends Notification implements ShouldQueue
      */
     public function toMail(): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject('There is created an login for u on '.config('app.name'))
             ->greeting('Hello,')
             ->line('A administrator has created an login for u on '.config('app.name'))

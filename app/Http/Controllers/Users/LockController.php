@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\LockValidator;
 use App\Models\User;
+use App\Notifications\Users\LockNotification;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class LockController
@@ -66,16 +68,22 @@ class LockController extends Controller
     /**
      * Method for deactivating users in the application.
      *
-     * @param  LockValidator $input         The form request class that handles the validation.
-     * @param  User          $userEntity    The database entity from the given user
+     * @param LockValidator $input The form request class that handles the validation.
+     * @param User $userEntity The database entity from the given user
      * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(LockValidator $input, User $userEntity): RedirectResponse
     {
         $this->authorize('deactivate-user', $userEntity);
 
-        $userEntity->ban(['comment' => $input->reden]);
-        $this->getAuthenticatedUser()->logActivity($userEntity, 'Gebruikers', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
+        DB::transaction(function () use ($input, $userEntity): void {
+            $userEntity->ban(['comment' => $input->reden]);
+            $input->user()->notify(new LockNotification($input->user()->name));
+
+            $this->getAuthenticatedUser()->logActivity($userEntity, 'Gebruikers', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
+        });
 
         return redirect()->route('users.show', $userEntity);
     }
@@ -83,8 +91,10 @@ class LockController extends Controller
     /**
      * Method for activating users in the application.
      *
-     * @param  User $userEntity The database entity from the given user.
+     * @param User $userEntity The database entity from the given user.
      * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(User $userEntity): RedirectResponse
     {

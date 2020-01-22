@@ -2,7 +2,7 @@
 
 Spoon is een laravel template voor onze projecten waar alleen RVB leden op moeten kunnen inloggen. 
 
-Indien je geen develoiper van de organisatie bent kun je deze template gebruiken. 
+Indien je geen developer van de organisatie bent kun je deze template gebruiken. 
 Maar hou er rekening mee dat we geen ondersteuning bieden aan mensen die geen lid zijn van onze organisatie. 
 
 Kort samengevat: Als je deze template gebruikt sta je alleen voor. 
@@ -61,7 +61,7 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
 De laatste synchronizatie is uitgevoerd op 26/12/2019. 
 
-Met als laatste commit: [Fix types consistency in database config](https://github.com/laravel/laravel/commit/195faa16cbeabc84b0eb9c9f4227ead762c93575)
+Met als laatste commit: [Update laravel mix and sass loader (#5203)](https://github.com/laravel/laravel/commit/9b6d1b14bcbeba1b52a75a48dedc0402b1f08bb5)
 
 ### Licentie 
-Spoon en Larevel zijn vrijgegeven als open-source sofware onder de MIT licentie
+Spoon en Laravel zijn vrijgegeven als open-source sofware onder de MIT licentie
