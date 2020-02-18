@@ -17,30 +17,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class PasswordSecurityController extends Controller
 {
-    /**
-     * 2FA Repository variable.
-     *
-     * @var TwoFactorAuthRepository
-     */
-    private $twoFactorAuthRepository;
+    private TwoFactorAuthRepository $twoFactorAuthRepository;
 
-    /**
-     * AccountConstroller constructor.
-     *
-     * @param  TwoFactorAuthRepository $twoFactorAuthRepository 2fa method layer.
-     * @return void
-     */
     public function __construct(TwoFactorAuthRepository $twoFactorAuthRepository)
     {
         $this->middleware(['auth', '2fa', 'forbid-banned-user']);
         $this->twoFactorAuthRepository = $twoFactorAuthRepository;
     }
 
-    /**
-     * Method for generating the 2Fa secret key.
-     *
-     * @return RedirectResponse
-     */
     public function generate2fasecret(): RedirectResponse
     {
         $route = redirect()->route('account.security');
@@ -63,14 +47,9 @@ class PasswordSecurityController extends Controller
     }
 
     /**
-     * Method for activating 2FA on the authenticated user.
-     *
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
      * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
      * @throws \PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException
-     *
-     * @param Request $request The form request class that contains all the request POST data.
-     * @return RedirectResponse
      */
     public function enable2fa(Request $request): RedirectResponse
     {
@@ -87,12 +66,6 @@ class PasswordSecurityController extends Controller
         return redirect()->route('account.security')->with('error', 'Invalide verificatie code, Probeer het opnieuw!');
     }
 
-    /**
-     * Method for disabling the 2Fa system from the authentiated user.
-     *
-     * @param  Request $request  The form request class that contains all the request POST data
-     * @return RedirectResponse
-     */
     public function disable2fa(Request $request): RedirectResponse
     {
         if (! Hash::check($request->get('current-password'), $request->user()->password)) {

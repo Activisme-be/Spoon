@@ -18,21 +18,11 @@ use Illuminate\Support\Facades\DB;
  */
 class LockController extends Controller
 {
-    /**
-     * LockController constructor.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware(['auth', '2fa', 'forbid-banned-user', 'portal:kiosk'])->except(['index']);
     }
 
-    /**
-     * Method for displaying the deactivated user error page.
-     *
-     * @return Renderable
-     */
     public function index(): Renderable
     {
         $user = $this->getAuthenticatedUser();
@@ -48,12 +38,6 @@ class LockController extends Controller
         return abort(Response::HTTP_NOT_FOUND);
     }
 
-    /**
-     * Method for displaying the confirmation view for blocking a user.
-     *
-     * @param  User $userEntity  The database entity from the given user.
-     * @return Renderable
-     */
     public function create(User $userEntity): Renderable
     {
         if ($this->getAuthenticatedUser()->can('deactivate-user', $userEntity)) {
@@ -66,12 +50,6 @@ class LockController extends Controller
     }
 
     /**
-     * Method for deactivating users in the application.
-     *
-     * @param LockValidator $input The form request class that handles the validation.
-     * @param User $userEntity The database entity from the given user
-     * @return RedirectResponse
-     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(LockValidator $input, User $userEntity): RedirectResponse
@@ -89,11 +67,6 @@ class LockController extends Controller
     }
 
     /**
-     * Method for activating users in the application.
-     *
-     * @param User $userEntity The database entity from the given user.
-     * @return RedirectResponse
-     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(User $userEntity): RedirectResponse

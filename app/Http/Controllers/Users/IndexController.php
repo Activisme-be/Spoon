@@ -22,23 +22,11 @@ use Spatie\Permission\Models\Role;
  */
 class IndexController extends Controller
 {
-    /**
-     * Create new IndexController constructor.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware(['auth', '2fa', 'role:admin|webmaster', 'forbid-banned-user', 'portal:kiosk']);
     }
 
-    /**
-     * Method to display all the users in the application.
-     *
-     * @param  Request      $request The request instance that holds all the information about the request.
-     * @param  User         $users   The database model builder for the application users
-     * @return Renderable
-     */
     public function index(Request $request, User $users): Renderable
     {
         switch ($request->filter) {
@@ -50,12 +38,6 @@ class IndexController extends Controller
         return view('users.index', ['users' => $users->paginate(), 'requestType' => $requestType]);
     }
 
-    /**
-     * Method for displaying the user information in the application.
-     *
-     * @param  User $user The database entity for the given user.
-     * @return Renderable
-     */
     public function show(User $user): Renderable
     {
         $roles = Role::all(['name']);
@@ -63,35 +45,17 @@ class IndexController extends Controller
         return view('users.show', compact('user', 'roles'));
     }
 
-    /**
-     * Method for displaying the create view for an new user.
-     *
-     * @param  Role $roles The database resource model for the application roles.
-     * @return Renderable
-     */
     public function create(Role $roles): Renderable
     {
         $roles = $roles->pluck('name', 'name');
         return view('users.create', compact('roles'));
     }
 
-    /**
-     * Method for searching specific user account in the application.
-     *
-     * @param  Request $input THe request class that holds all the request information.
-     * @return Renderable
-     */
     public function search(Request $request, User $users): Renderable
     {
         return view('users.index', ['users' => $users->search($request->term)->paginate(), 'requestType' => 'search']);
     }
 
-    /**
-     * Method for storing the new user in the application.
-     *
-     * @param  InformationValidator $input The form request class that handles the input validation.
-     * @return RedirectResponse
-     */
     public function store(InformationValidator $input): RedirectResponse
     {
         $input->merge(['password' => Str::random(16)]);
@@ -109,13 +73,6 @@ class IndexController extends Controller
         return redirect()->route('users.show', $user);
     }
 
-    /**
-     * Method for updating the user in the application.
-     *
-     * @param  InformationValidator $input  The form request class that handles the validation.
-     * @param  User                 $user   The database entity form the given user.
-     * @return RedirectResponse
-     */
     public function update(InformationValidator $input, User $user): RedirectResponse
     {
         if ($user->update($input->all())) {
@@ -131,15 +88,6 @@ class IndexController extends Controller
         return redirect()->route('users.show', $user);
     }
 
-    /**
-     * Method for deleting the account in the application.
-     *
-     * @throws \Exception When we can't perform the user delete.
-     *
-     * @param  Request $request The request entity that holds all the request information.
-     * @param  User    $user    The database entity from the given user.
-     * @return View|RedirectResponse
-     */
     public function destroy(Request $request, User $user)
     {
         // 1) Request type is GET. So we need to display the confirmation view.

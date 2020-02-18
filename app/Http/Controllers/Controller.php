@@ -19,11 +19,6 @@ class Controller extends BaseController
     use DispatchesJobs;
     use ValidatesRequests;
 
-    /**
-     * Helper function for getting the authenticated user.
-     *
-     * @return User
-     */
     public function getAuthenticatedUser(): User
     {
         return auth()->user();

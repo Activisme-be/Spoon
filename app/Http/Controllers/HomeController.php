@@ -15,11 +15,6 @@ use Spatie\Activitylog\Models\Activity;
  */
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware(['auth', '2fa', 'forbid-banned-user', 'portal:application'])->only(['index']);
@@ -27,21 +22,11 @@ class HomeController extends Controller
         $this->middleware(['guest'])->only(['welcome']);
     }
 
-    /**
-     * Get the first page of the application.
-     *
-     * @return Renderable
-     */
     public function welcome(): Renderable
     {
         return view('welcome');
     }
 
-    /**
-     * Method for the dashboard page from the kiosk management.
-     *
-     * @return Renderable
-     */
     public function kiosk(): Renderable
     {
         $logs = Activity::latest()->take(7)->get();
@@ -50,11 +35,6 @@ class HomeController extends Controller
         return view('kiosk', compact('logs', 'alerts'));
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return Renderable
-     */
     public function index(): Renderable
     {
         return view('home');

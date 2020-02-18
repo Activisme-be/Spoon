@@ -19,17 +19,8 @@ use Illuminate\Support\Facades\DB;
  */
 class TwoFactorResetController extends Controller
 {
-    /**
-     * @var AuthenticatorRepository
-     */
-    private $authenticator;
+    private AuthenticatorRepository $authenticator;
 
-    /**
-     * TwoFactorResetController constructor.
-     *
-     * @param  AuthenticatorRepository $authenticator
-     * @return void
-     */
     public function __construct(AuthenticatorRepository $authenticator)
     {
         $this->middleware('auth');
@@ -38,28 +29,17 @@ class TwoFactorResetController extends Controller
         $this->authenticator = $authenticator;
     }
 
-    /**
-     * Method for displaying the 2fa recovery view.
-     *
-     * @return Renderable
-     */
     public function index(): Renderable
     {
         if ($this->authenticator->canDisplayRecoveryView()) {
             return view('auth.2fa-recovery');
         }
 
-        // Currently wa can't display the reset form for the 2FA system.
+        // Currently we can't display the reset form for the 2FA system.
         // Because the module is not enabled of the user is currently authenticated.
         abort(Response::HTTP_NOT_FOUND);
     }
 
-    /**
-     * Method for requesting a reqet of the 2FA authentication for the user.
-     *
-     * @param  TwoFactorRecoveryRequest $request The request class that handles all the validation logic.
-     * @return RedirectResponse
-     */
     public function request(TwoFactorRecoveryRequest $request): RedirectResponse
     {
         // Password hash check is performed on the Form validation.
@@ -78,11 +58,6 @@ class TwoFactorResetController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Handle the reset method for the 2FA system.
-     *
-     * @return RedirectResponse
-     */
     public function handle(): RedirectResponse
     {
         abort_if(! $this->authenticator->canDisplayRecoveryView(), Response::HTTP_NOT_FOUND);
