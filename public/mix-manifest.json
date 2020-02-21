@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=cb7b98c328cbea386859",
-    "/js/auth.js": "/js/auth.js?id=0d6ce5102b1446450b8e",
-    "/css/auth.css": "/css/auth.css?id=be3a2bb22e2ff25121db",
-    "/css/app.css": "/css/app.css?id=f810a25b207c086eb062"
+    "/js/app.js": "/js/app.js",
+    "/js/auth.js": "/js/auth.js",
+    "/css/auth.css": "/css/auth.css",
+    "/css/app.css": "/css/app.css"
 }
