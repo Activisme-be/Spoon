@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+            require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ if (mix.inProduction()) {
             parallel: true,
             sourceMap: true,
         }
-    });
+    }).purgeCss();
 } else {
     // Uses inline source-maps on development
     mix.webpackConfig({
