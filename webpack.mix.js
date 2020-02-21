@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+            require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ mix // Laravel asset runner
 
    // Application assets
    .js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+   .purgeCss();
 
 // Process optimalization
 if (mix.inProduction()) {

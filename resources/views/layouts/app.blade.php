@@ -104,10 +104,24 @@
 
         <footer class="footer">
             <div class="container-fluid">
-                <span class="copyright">&copy; {{ date('Y') }}, {{ config('app.name') }}</span>
+                <span class="footer-text font-weight-bold">&copy; 2019 - {{ date('Y') }} <span class="ml-1">{{ config('app.name') }}</span></span>
 
                 <div class="float-right">
-                    <span class="copyright">v1.0.0</span>
+                    <a class="text-decoration-none footer-link" id="toTop" href="#">
+                        <i class="fe font-weight-bold fe-chevrons-up icon-pl-1"></i> Naar boven
+                    </a>
+
+                    <span class="dot align-middle"></span>
+
+                    <a href="" target="_blank" class="footer-link text-decoration-none">
+                        Privacy
+                    </a>
+
+                    <span class="dot align-middle"></span>
+
+                    <a href="" target="_blank" class="footer-link text-decoration-none">
+                        Terms
+                    </a>
                 </div>
             </div>
         </footer>
