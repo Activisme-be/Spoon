@@ -20,7 +20,8 @@ mix // Laravel asset runner
 
    // Application assets
    .js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+   .purgeCss();
 
 // Process optimalization
 if (mix.inProduction()) {
@@ -31,7 +32,7 @@ if (mix.inProduction()) {
             parallel: true,
             sourceMap: true,
         }
-    }).purgeCss();
+    });
 } else {
     // Uses inline source-maps on development
     mix.webpackConfig({
