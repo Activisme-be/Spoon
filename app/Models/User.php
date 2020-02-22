@@ -25,31 +25,14 @@ class User extends UserRepository implements BannableContract
     use ActivityLog;
     use CausesActivity;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['voornaam', 'on_kiosk', 'achternaam', 'email', 'password', 'last_login_at'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token'];
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
     protected $dates = ['created_at', 'banned_at', 'updated_at', 'last_login_at'];
 
     /**
      * Method for tracking if the user online or not.
-     *
-     * @return bool
      */
     public function isOnline(): bool
     {
@@ -58,9 +41,6 @@ class User extends UserRepository implements BannableContract
 
     /**
      * Method for hashing the given password in the application storage.
-     *
-     * @param  string $password The given or generated password from the application/form
-     * @return void
      */
     public function setPasswordAttribute(string $password): void
     {
@@ -69,8 +49,6 @@ class User extends UserRepository implements BannableContract
 
     /**
      * Data relation for the 2FA password securities.
-     *
-     * @return HasOne
      */
     public function passwordSecurity(): HasOne
     {
@@ -79,8 +57,6 @@ class User extends UserRepository implements BannableContract
 
     /**
      * Get the user's name.
-     *
-     * @return string
      */
     public function getNameAttribute(): string
     {

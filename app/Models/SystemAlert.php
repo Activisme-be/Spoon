@@ -21,11 +21,11 @@ class SystemAlert extends Model
 
     /**
      * Method for getting the information about who sended the notification.
-     *
-     * @return BelongsTo
      */
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class)->withDefault(['name' => config('app.name')]);
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => config('app.name')
+        ]);
     }
 }

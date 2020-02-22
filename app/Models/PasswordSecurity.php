@@ -13,17 +13,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class PasswordSecurity extends Model
 {
-    /**
-     * The guarded fields for the database table.
-     *
-     * @var array
-     */
     protected $guarded = ['id'];
 
     /**
      * Data relation for the user that is attached to the password securities.
-     *
-     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
