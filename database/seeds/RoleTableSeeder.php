@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRoles;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -15,8 +16,13 @@ class RoleTableSeeder extends Seeder
      */
     public function run(): void
     {
-        factory(Role::class)->create(['name' => 'user']);
-        factory(Role::class)->create(['name' => 'admin']);
-        factory(Role::class)->create(['name' => 'webmaster']);
+        foreach ($this->rolesArray() as $key => $role) {
+            factory(Role::class)->create(['name' => $role]);
+        }
+    }
+
+    private function rolesArray(): array
+    {
+        return [UserRoles::ADMIN, UserRoles::WEBMASTER, UserRoles::USER];
     }
 }

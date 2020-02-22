@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Schema;
  */
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run(): void
     {
         DB::connection()->disableQueryLog();
@@ -27,11 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
     }
 
-    /**
-     * Method that let us truncate all the database tables.
-     *
-     * @return void
-     */
     protected function truncateAll(): void
     {
         Schema::disableForeignKeyConstraints();
