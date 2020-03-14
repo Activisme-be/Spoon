@@ -5,6 +5,7 @@ use App\Http\Controllers\Alerts\KioskController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Users\IndexController;
 use App\Http\Controllers\Users\LockController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
