@@ -20,11 +20,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [User::class => UserPolicy::class];
 
-    public function register(): void
-    {
-        $this->app->bind(AuthenticatesRequests::class, Authenticate::class);
-    }
-
     /**
      * Register any authentication / authorization services.
      *
