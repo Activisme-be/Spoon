@@ -59,7 +59,7 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 ### Framework sync
 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
-De laatste synchronizatie is uitgevoerd op 14/03/2020. Met als laatste sync. versie: **Laravel 7.O** 
+De laatste synchronizatie is uitgevoerd op 26/03/2020. Met als laatste sync. versie: **Laravel 7.3** 
 
 Met als laatste commit: [Update laravel mix and sass loader (#5203)](https://github.com/laravel/laravel/commit/9b6d1b14bcbeba1b52a75a48dedc0402b1f08bb5)
 
