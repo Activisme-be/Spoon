@@ -15,22 +15,11 @@ use Illuminate\Support\Facades\DB;
  */
 class NotificationsRepository
 {
-    /**
-     * Method for getting the entity from the authenticated user.
-     *
-     * @return User
-     */
     protected function getAuthUser(): User
     {
         return auth()->user();
     }
 
-    /**
-     * Method for getting the notifications and determinating the request type.
-     *
-     * @param  string|null $type The type of notifications u want to display in the application.
-     * @return array
-     */
     public function getByType(?string $type = null): array
     {
         switch ($type) {
@@ -39,40 +28,23 @@ class NotificationsRepository
         }
     }
 
-    /**
-     * Method for marking all the unread notifications from the user as read.
-     *
-     * @return void
-     */
     public function markAllAsRead(): void
     {
         $this->getAuthUser()->unreadNotifications->markAsread();
     }
 
-    /**
-     * Method sending out the system alert notification.
-     *
-     * @param  Request $input The request instance that holds all the request information.
-     * @return bool
-     */
     public function sendSystemAlert(Request $input): bool
     {
         $input->merge(['creator_id' => $this->getAuthUser()->id]);
 
-        return DB::transaction(static function () use ($input): bool {
+        return DB::transaction(function () use ($input): bool {
             $alert = SystemAlert::create($input->all());
-            (new self())->sendOutNotifications($alert);
+            $this->sendOutNotifications($alert);
 
             return true;
         });
     }
 
-    /**
-     * Method to push the system alert notification to the queue.
-     *
-     * @param  SystemAlert $alertEntity THe entity from the notification data.
-     * @return void
-     */
     private function sendOutNotifications(SystemAlert $alertEntity): void
     {
         foreach (User::all() as $user) {

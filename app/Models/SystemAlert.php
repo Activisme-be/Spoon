@@ -24,8 +24,6 @@ class SystemAlert extends Model
      */
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class)->withDefault([
-            'name' => config('app.name')
-        ]);
+        return $this->belongsTo(User::class)->withDefault(['name' => config('app.name')]);
     }
 }

@@ -26,9 +26,7 @@ class User extends UserRepository implements BannableContract
     use CausesActivity;
 
     protected $fillable = ['voornaam', 'on_kiosk', 'achternaam', 'email', 'password', 'last_login_at'];
-
     protected $hidden = ['password', 'remember_token'];
-
     protected $dates = ['created_at', 'banned_at', 'updated_at', 'last_login_at'];
 
     /**

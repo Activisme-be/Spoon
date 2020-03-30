@@ -16,19 +16,8 @@ class LoginCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * The variable that holds all the form inputs.
-     *
-     * @var array
-     */
-    public $input;
+    public array $input;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @param  array $input The variable that holds the form request inputs.
-     * @return void
-     */
     public function __construct(array $input)
     {
         $this->input = $input;
@@ -36,8 +25,6 @@ class LoginCreated extends Notification implements ShouldQueue
 
     /**
      * Get the notification's delivery channels.
-     *
-     * @return array
      */
     public function via(): array
     {
@@ -46,8 +33,6 @@ class LoginCreated extends Notification implements ShouldQueue
 
     /**
      * Get the mail representation of the notification.
-     *
-     * @return MailMessage
      */
     public function toMail(): MailMessage
     {

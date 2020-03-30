@@ -18,19 +18,9 @@ class SystemAlert extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    /** @var Alert $notificationData */
-    public $notificationData;
+    public Alert $notificationData;
+    public User $creator;
 
-    /** @var User $user */
-    public $creator;
-
-    /**
-     * Create a new notification instance.
-     *
-     * @param  Alert $notificationData
-     * @param  User  $creator
-     * @return void
-     */
     public function __construct(Alert $notificationData, User $creator)
     {
         $this->creator = $creator;
@@ -39,8 +29,6 @@ class SystemAlert extends Notification implements ShouldQueue
 
     /**
      * Get the notification's delivery channels.
-     *
-     * @return array
      */
     public function via(): array
     {
@@ -49,8 +37,6 @@ class SystemAlert extends Notification implements ShouldQueue
 
     /**
      * Get the mail representation of the notification.
-     *
-     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail(): MailMessage
     {
@@ -61,8 +47,6 @@ class SystemAlert extends Notification implements ShouldQueue
 
     /**
      * Get the array representation of the notification.
-     *
-     * @return array
      */
     public function toArray(): array
     {

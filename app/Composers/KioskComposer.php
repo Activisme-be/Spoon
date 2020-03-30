@@ -15,8 +15,6 @@ class KioskComposer
 {
     /**
      * Method for getting the dashboard counters for the users.
-     *
-     * @return stdClass
      */
     private function getUserCounters(): stdClass
     {
@@ -28,8 +26,6 @@ class KioskComposer
 
     /**
      * Method for getting the audit entry counts for the dashboard
-     *
-     * @return stdClass
      */
     private function getAuditCounters(): stdClass
     {
@@ -41,8 +37,6 @@ class KioskComposer
 
     /**
      * Method for getting the system alert counters.
-     *
-     * @return stdClass
      */
     private function getNotificationCounters(): stdClass
     {
@@ -54,9 +48,6 @@ class KioskComposer
 
     /**
      * Bind data to the view.
-     *
-     * @param  View $view The view builder instance.
-     * @return void
      */
     public function compose(View $view): void
     {

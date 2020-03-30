@@ -12,11 +12,6 @@ use PragmaRX\Google2FALaravel\Support\Authenticator as BaseAuthenticator;
  */
 class Authenticator extends BaseAuthenticator
 {
-    /**
-     * Determine whether the user can pass with no OTP token.
-     *
-     * @return bool
-     */
     protected function canPassWithoutCheckingOTP(): bool
     {
         if (empty($this->getUser()->passwordSecurity)) {
@@ -29,11 +24,6 @@ class Authenticator extends BaseAuthenticator
             || $this->twoFactorAuthStillValid();
     }
 
-    /**
-     * Determine whether we can display the 2FA recovery view or not.
-     *
-     * @return bool
-     */
     public function canDisplayRecoveryView(): bool
     {
         return $this->isEnabled() && ! $this->isAuthenticated();
