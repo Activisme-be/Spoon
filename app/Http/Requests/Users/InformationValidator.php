@@ -39,9 +39,9 @@ class InformationValidator extends FormRequest
     protected function baseRules(): array
     {
         return [
-            'voornaam'   => ['required', 'string', 'max:191'],
+            'voornaam' => ['required', 'string', 'max:191'],
             'achternaam' => ['required', 'string', 'max:191'],
-            'role'       => ['required|array|min:1'],
+            'role' => ['required|array|min:1'],
         ];
     }
 

@@ -12,12 +12,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class UserRepository extends Authenticatable
 {
-    /**
-     * Search query scope for users in the application.
-     *
-     * @param  Builder $query The eloqunet query builder instance.
-     * @return Builder
-     */
     public function scopeSearch(Builder $query, string $searchTerm): Builder
     {
         return $query->where('voornaam', 'LIKE', "%{$searchTerm}%")

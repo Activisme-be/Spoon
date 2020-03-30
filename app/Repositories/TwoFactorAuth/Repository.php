@@ -16,19 +16,8 @@ use RuntimeException;
  */
 class Repository
 {
-    /**
-     * The Guard implementation.
-     *
-     * @var Guard
-     */
-    protected $auth;
+    protected Guard $auth;
 
-    /**
-     * Repository Constructor.
-     *
-     * @param  Guard $auth The variable for mapping hte authentication guard.
-     * @return void
-     */
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
@@ -36,8 +25,6 @@ class Repository
 
     /**
      * Helper function for getting the authenticated user.
-     *
-     * @return User
      */
     public function getAuthenticatedUser(): User
     {
@@ -52,8 +39,6 @@ class Repository
 
     /**
      * Method for the underlying Google 2FA layer.
-     *
-     * @return Google2FA
      */
     public function google2FaLayer(): Google2FA
     {
@@ -62,8 +47,6 @@ class Repository
 
     /**
      * Get the url for the google 2FA system.
-     *
-     * @return string
      */
     public function getGoogle2FaUrl(): string
     {
@@ -85,8 +68,6 @@ class Repository
      *
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
      * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
-     *
-     * @return PassWordSecurity
      */
     public function createSecretKey(): PasswordSecurity
     {
