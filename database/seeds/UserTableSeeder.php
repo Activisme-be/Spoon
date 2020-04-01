@@ -34,7 +34,7 @@ class UserTableSeeder extends Seeder
 
     private function organisationWebmasters(): array
     {
-        return ['tim@' . config('mail.host')];
+        return ['tim@' . config('mail.mailers.smtp.host')];
     }
 
     /**
@@ -65,7 +65,7 @@ class UserTableSeeder extends Seeder
         $firstName = $firstName ?: $this->faker()->firstName();
         $lastName = $lastName ?: $this->faker()->lastName;
 
-        $email = strtolower($firstName) . '.' . strtolower($lastName) . '@' . config('mail.host');
+        $email = strtolower($firstName) . '.' . strtolower($lastName) . '@' . config('mail.mailers.smtp.host');
 
         return compact('firstName', 'lastName', 'email');
     }
@@ -75,7 +75,7 @@ class UserTableSeeder extends Seeder
         return [
             'voornaam' => $name[0],
             'achternaam' => $name[1],
-            'email' => strtolower($name[0]) . '@' . config('mail.host'),
+            'email' => strtolower($name[0]) . '@' . config('mail.mailers.smtp.host'),
             'password' => 'password'
         ];
     }
