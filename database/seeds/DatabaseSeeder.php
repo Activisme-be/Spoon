@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         collect(DB::select("SHOW FULL TABLES WHERE Table_Type = 'BASE TABLE'"))
-            ->map(static function ($tableProperties) {
+            ->map(static function (stdClass $tableProperties): string {
                 return get_object_vars($tableProperties)[key($tableProperties)];
             })
-            ->reject(static function (string $tableName) {
+            ->reject(static function (string $tableName): bool {
                 return $tableName === 'migrations';
             })
-            ->each(static function (string $tableName) {
+            ->each(static function (string $tableName): void {
                 DB::table($tableName)->truncate();
             });
 
