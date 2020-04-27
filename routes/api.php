@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/** @todo PHPUNIT */ Route::middleware('auth:api')->get('/user', static function (Request $request) {
+Route::middleware('auth:api')->get('/user', static function (Request $request) {
     return $request->user();
 });

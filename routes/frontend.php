@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/** @todo PHPUNIT */  Auth::routes();
+Auth::routes();
 
 // Home routes
-/** @todo PHPUNIT */  Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');

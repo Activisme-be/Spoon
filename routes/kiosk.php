@@ -18,30 +18,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/** @todo PHPUNIT */ Route::get('/kiosk', [HomeController::class, 'kiosk'])->name('kiosk.dashboard');
+Route::get('/kiosk', [HomeController::class, 'kiosk'])->name('kiosk.dashboard');
 
 // User routes
-/** @todo PHPUNIT */ Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
-/** @todo PHPUNIT */ Route::get('/gebruikers/zoek', [IndexController::class, 'search'])->name('users.search');
-/** @todo PHPUNIT */ Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
-/** @todo PHPUNIT */ Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('users.update');
-/** @todo PHPUNIT */ Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
-/** @todo PHPUNIT */ Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
-/** @todo PHPUNIT */ Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');
+Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
+Route::get('/gebruikers/zoek', [IndexController::class, 'search'])->name('users.search');
+Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
+Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('users.update');
+Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
+Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
+Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');
 
 // User state routes
-/** @todo PHPUNIT */ Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
-/** @todo PHPUNIT */ Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
-/** @todo PHPUNIT */ Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
-/** @todo PHPUNIT */ Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
+Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
+Route::get('/{userEntity}/deactiveer', [LockController::class, 'create'])->name('users.lock');
+Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('users.unlock');
+Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
 
 // System alert routes
-/** @todo PHPUNIT */ Route::get('/alerts', [KioskController::class, 'create'])->name('alerts.index');
-/** @todo PHPUNIT */ Route::get('/alerts/overzicht', [KioskController::class, 'index'])->name('alerts.overview');
-/** @todo PHPUNIT */ Route::get('/alerts/{notification}', [KioskController::class, 'show'])->name('alerts.show');
-/** @todo PHPUNIT */ Route::post('/alerts', [KioskController::class, 'store'])->name('alerts.store');
+Route::get('/alerts', [KioskController::class, 'create'])->name('alerts.index');
+Route::get('/alerts/overzicht', [KioskController::class, 'index'])->name('alerts.overview');
+Route::get('/alerts/{notification}', [KioskController::class, 'show'])->name('alerts.show');
+Route::post('/alerts', [KioskController::class, 'store'])->name('alerts.store');
 
 // Audit routes
-/** @todo PHPUNIT */ Route::get('/audit', [ActivityController::class, 'index'])->name('audit.overview');
-/** @todo PHPUNIT */ Route::get('/audit/zoeken', [ActivityController::class, 'search'])->name('audit.search');
-/** @todo PHPUNIT */ Route::get('/audit/export/{filter?}', [ActivityController::class, 'export'])->name('audit.export');
+Route::get('/audit', [ActivityController::class, 'index'])->name('audit.overview');
+Route::get('/audit/zoeken', [ActivityController::class, 'search'])->name('audit.search');
+Route::get('/audit/export/{filter?}', [ActivityController::class, 'export'])->name('audit.export');
