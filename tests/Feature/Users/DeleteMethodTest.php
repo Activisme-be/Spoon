@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Users;
 
+use App\Enums\UserRoles;
 use App\Http\Controllers\Users\IndexController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 /**
@@ -24,8 +26,16 @@ class DeleteMethodTest extends TestCase
         ]);
     }
 
-    public function testGetMethodForDeletingUsers(): void
+    public function testCanDisplayTheConfirmationView(): void
     {
-        $william = factory(User::class)->create();
+        $role = factory(Role::class)->create(['name' => UserRoles::WEBMASTER]);
+
+        $william = factory(User::class)->create()->assignRole($role);
+        $helena = factory(User::class)->create();
+
+        $this->actingAs($william)
+            ->get(route('users.destroy', $helena))
+            ->assertStatus(200)
+            ->assertViewIs('users.delete');
     }
 }

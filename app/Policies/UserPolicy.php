@@ -34,7 +34,7 @@ class UserPolicy
      */
     public function onKiosk(User $user): bool
     {
-        return $user->on_kiosk;
+        return auth()->check() && $user->on_kiosk;
     }
 
     /**
