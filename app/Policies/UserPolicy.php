@@ -32,9 +32,9 @@ class UserPolicy
      * @param  User $user   Entity of the authenticated user.
      * @return bool
      */
-    public function onKiosk(User $user): bool
+    public function onKiosk(User $user): ?bool
     {
-        return $user->on_kiosk;
+        return auth()->check() && $user->on_kiosk;
     }
 
     /**
@@ -45,7 +45,7 @@ class UserPolicy
      */
     public function onApplication(User $user): bool
     {
-        return ! $this->onKiosk($user);
+        return auth()->check() && ! $this->onKiosk($user);
     }
 
     /**
