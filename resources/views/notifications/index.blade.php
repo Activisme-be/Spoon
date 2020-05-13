@@ -22,11 +22,11 @@
     <div class="container-fluid pb-3">
         <div class="row">
             <div class="col-3"> {{-- Sidebar --}}
-                <div class="list-group mb-3">
-                    <a href="{{ route('notifications.index') }}" class="list-group-item list-group-item-action">
+                <div class="list-group list-group-transparent mb-3">
+                    <a href="{{ route('notifications.index') }}" class="list-group-item {{ active(route('notifications.index', ['type' => ''])) }} list-group-item-action">
                         Ongelezen notificaties
                     </a>
-                    <a href="{{ route('notifications.index', ['type' => 'alle']) }}" class="list-group-item list-group-item-action">
+                    <a href="{{ route('notifications.index', ['type' => 'alle']) }}" class="list-group-item {{ active(route('notifications.index', ['type' => 'alle'])) }} list-group-item-action">
                         Alle notificaties
                     </a>
                 </div>
