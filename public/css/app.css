@@ -12285,12 +12285,16 @@ body {
 }
 
 .nav-underline .nav-link:hover {
-  color: #007bff;
+  color: #5A67D8;
+}
+
+.icon-subnav {
+  color: #5A67D8;
 }
 
 .nav-underline .active {
   font-weight: 500;
-  color: #343a40;
+  color: #5A67D8;
 }
 
 .text-white-50 {
@@ -12327,12 +12331,12 @@ body {
 
 .list-group-transparent .list-group-item:hover {
   background: #fff;
-  border-left: 5px solid #b9210c;
+  border-left: 5px solid #5A67D8;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 .list-group-transparent .list-group-item.active {
-  border-left: 5px solid #b9210c;
+  border-left: 5px solid #5A67D8;
   background: #fff;
   color: #4A5568;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
@@ -12340,7 +12344,11 @@ body {
 
 .list-group-transparent .list-group-item.active .fe {
   font-weight: bold;
-  color: #718096;
+  color: #5A67D8;
+}
+
+.bg-navbar {
+  background-image: linear-gradient(#2c3e50, #34495e);
 }
 
 
