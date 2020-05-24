@@ -2,7 +2,7 @@
 
 namespace App\Repositories\TwoFactorAuth;
 
-use App\Models\PasswordSecurity;
+use App\Models\TwoFactorAuthentication;
 use App\Models\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Response;
@@ -71,7 +71,7 @@ class Repository
      */
     public function createSecretKey(): PasswordSecurity
     {
-        return PasswordSecurity::create([
+        return TwoFactorAuthentication::create([
             'user_id' => $this->getAuthenticatedUser()->id,
             'google2fa_secret' => $this->google2FaLayer()->generateSecretKey(),
             'google2FA_enable' => 0,
