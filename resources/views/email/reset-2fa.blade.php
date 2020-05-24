@@ -1,4 +1,4 @@
-@component('mail::message')
+git branch @component('mail::message')
 # Aanvraag voor het resetten van je 2FA.
 
 Geachte,
