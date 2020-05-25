@@ -58,7 +58,7 @@ class PasswordSecurityController extends Controller
 
     public function disable2fa(TwoFactorDisableRequest $request): RedirectResponse
     {
-        $request->user()->twoFactorAuthentiction->delete();
+        $request->user()->twoFactorAuthentication->delete();
 
         return redirect()->route('account.security')->with('success', '2FA is gedeactiveerd.');
     }

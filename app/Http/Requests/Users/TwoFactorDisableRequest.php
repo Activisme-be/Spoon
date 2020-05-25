@@ -14,6 +14,6 @@ class TwoFactorDisableRequest extends FormRequest
 {
     public function rules(): array
     {
-        return ['current-password' => ['required', new MatchUserPassword($this->user)]];
+        return ['current-password' => ['required', new MatchUserPassword($this->user())]];
     }
 }
