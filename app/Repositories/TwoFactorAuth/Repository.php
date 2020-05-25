@@ -4,6 +4,7 @@ namespace App\Repositories\TwoFactorAuth;
 
 use App\Models\TwoFactorAuthentication;
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Response;
 use PragmaRX\Google2FALaravel\Google2FA;
@@ -26,7 +27,7 @@ class Repository
     /**
      * Helper function for getting the authenticated user.
      */
-    public function getAuthenticatedUser(): User
+    public function getAuthenticatedUser(): Authenticatable
     {
         if (! $this->auth->check()) {
             // There is no authenticated user found in the application.
@@ -53,7 +54,7 @@ class Repository
         $user = $this->getAuthenticatedUser();
         $google2FaUrl = '';
 
-        if ($user->passwordSecurity()->exists()) {
+        if ($user->twoFactorAuthentication()->exists()) {
             $google2fa = app('pragmarx.google2fa');
             $google2fa->setAllowInsecureCallToGoogleApis(true);
 
@@ -69,7 +70,7 @@ class Repository
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
      * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
      */
-    public function createSecretKey(): PasswordSecurity
+    public function createSecretKey(): TwoFactorAuthentication
     {
         return TwoFactorAuthentication::create([
             'user_id' => $this->getAuthenticatedUser()->id,

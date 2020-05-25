@@ -49,7 +49,7 @@ class TwoFactorResetController extends Controller
 
         if ($this->authenticator->canDisplayRecoveryView()) {
             DB::transaction(static function () use ($user): void {
-                $user->passwordSecurity()->update(['reset_requested' => true]);
+                $user->twofactorAuthenticationy()->update(['reset_requested' => true]);
                 $user->notify(new TwoFactorResetNotification());
             });
         }

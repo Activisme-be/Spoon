@@ -57,8 +57,8 @@ class PasswordSecurityController extends Controller
         $user = $repositoryLayer->getAuthenticatedUser();
         $secret = $request->get('verify-code');
 
-        if ($repositoryLayer->google2FaLayer()->verifyKey($user->passwordSecurity->google2fa_secret, $secret)) {
-            $user->passwordSecurity->update(['google2fa_enable' => true]);
+        if ($repositoryLayer->google2FaLayer()->verifyKey($user->twoFactorAuthentication->google2fa_secret, $secret)) {
+            $user->twoFactorAuthentication->update(['google2fa_enable' => true]);
 
             return redirect()->route('account.security')->with('success', '2Fa is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
         }
@@ -74,8 +74,8 @@ class PasswordSecurityController extends Controller
 
         $validatedData = $request->validate(['current-password' => 'required']);
 
-        $request->user()->passwordSecurity->update(['google2fa_enable' => false]);
-        $request->user()->passwordSecurity->delete();
+        $request->user()->twoFactorAuthentication->update(['google2fa_enable' => false]);
+        $request->user()->twoFactorAuthentiction->delete();
 
         return redirect()->route('account.security')->with('success', '2FA is gedeactiveerd.');
     }
