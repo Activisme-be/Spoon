@@ -56,9 +56,7 @@ class Repository
 
         if ($user->twoFactorAuthentication()->exists()) {
             $google2fa = app('pragmarx.google2fa');
-            $google2fa->setAllowInsecureCallToGoogleApis(true);
-
-            $google2FaUrl = $google2fa->getQRCodeGoogleUrl(config('app.name'), $user->email, $user->passwordSecurity->google2fa_secret);
+            $google2FaUrl = $google2fa->getQRCodeInline(config('app.name'), $user->email, $user->twoFactorAuthentication->google2fa_secret);
         }
 
         return $google2FaUrl;

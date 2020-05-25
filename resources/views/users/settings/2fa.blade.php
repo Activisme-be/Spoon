@@ -5,7 +5,7 @@
 <div class="card mt-3 border-0 shadow-sm card-body">
     <h6 class="border-bottom border-gray pb-1 mb-3">2FA authenticatie</h6>
 
-    @if (empty($currentUser->passwordSecurity))
+    @if (empty($currentUser->twoFactorAuthentication))
         @if (session('error'))
             <div class="alert alert-danger border-0" role="alert">{{ session('error') }}</div>
         @endif
@@ -41,7 +41,7 @@
                 </button>
             </div>
         </form>
-    @elseif (! $currentUser->passwordSecurity->google2fa_enable)
+    @elseif (! $currentUser->twoFactorAuthentication->google2fa_enable)
         @if (session('error'))
             <div class="alert alert-danger border-0" role="alert">{{ session('error') }}</div>
         @endif
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </form>
-    @elseif ($currentUser->passwordSecurity->google2fa_enable)
+    @elseif ($currentUser->twoFactorAuthentication->google2fa_enable)
         <p class="card-text text-success mb-3">
             <span class="font-weight-bold mr-2"><i class="fe fe-info mr-1"></i> Info:</span>
             2FA is momenteel geactiveerd op uw account.
