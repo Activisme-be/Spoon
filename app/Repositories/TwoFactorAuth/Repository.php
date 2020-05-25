@@ -76,4 +76,14 @@ class Repository
             'google2FA_enable' => 0,
         ]);
     }
+
+    /**
+     * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
+     * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
+     * @throws \PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException
+     */
+    public function canEnable2Fa(User $user, string $verificationCode): bool
+    {
+        return $this->google2FaLayer()->verifyKey($user->twoFactorAuthentication->google2fa_secret, $verificationCode);
+    }
 }
