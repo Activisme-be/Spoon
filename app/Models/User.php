@@ -55,9 +55,9 @@ class User extends Authenticatable implements BannableContract
     /**
      * Data relation for the 2FA password securities.
      */
-    public function passwordSecurity(): HasOne
+    public function twoFactorAuthentication(): HasOne
     {
-        return $this->hasOne(PasswordSecurity::class);
+        return $this->hasOne(TwoFactorAuthentication::class);
     }
 
     /**

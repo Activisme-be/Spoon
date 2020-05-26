@@ -25,14 +25,13 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="password">Uw wachtwoord</label>
+                                    <label for="password">Uw recovery token</label>
 
-                                    <input id="password" type="password" class="form-control {{ $errors->has('wachtwoord') ? ' is-invalid' : '' }}" name="wachtwoord" value="" required autofocus>
+                                    <input id="password" type="password" class="form-control {{ $errors->has('recovery_token') ? ' is-invalid' : '' }}" name="recovery_token" value="" required autofocus>
 
-
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('wachtwoord') }}</strong>
-                                    </span>
+                                    @if ($errors->first('recovery_token'))
+                                        <span class="invalid-feedback">{{ $errors->first('recovery_token') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group no-margin">

@@ -2,8 +2,9 @@
 
 namespace App\Repositories\TwoFactorAuth;
 
-use App\Models\PasswordSecurity;
+use App\Models\TwoFactorAuthentication;
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Response;
 use PragmaRX\Google2FALaravel\Google2FA;
@@ -17,16 +18,18 @@ use RuntimeException;
 class Repository
 {
     protected Guard $auth;
+    protected RecoveryRepository $recoveryRepository;
 
-    public function __construct(Guard $auth)
+    public function __construct(Guard $auth, RecoveryRepository $recoveryRepository)
     {
         $this->auth = $auth;
+        $this->recoveryRepository = $recoveryRepository;
     }
 
     /**
      * Helper function for getting the authenticated user.
      */
-    public function getAuthenticatedUser(): User
+    public function getAuthenticatedUser(): Authenticatable
     {
         if (! $this->auth->check()) {
             // There is no authenticated user found in the application.
@@ -53,11 +56,9 @@ class Repository
         $user = $this->getAuthenticatedUser();
         $google2FaUrl = '';
 
-        if ($user->passwordSecurity()->exists()) {
+        if ($user->twoFactorAuthentication()->exists()) {
             $google2fa = app('pragmarx.google2fa');
-            $google2fa->setAllowInsecureCallToGoogleApis(true);
-
-            $google2FaUrl = $google2fa->getQRCodeGoogleUrl(config('app.name'), $user->email, $user->passwordSecurity->google2fa_secret);
+            $google2FaUrl = $google2fa->getQRCodeInline(config('app.name'), $user->email, $user->twoFactorAuthentication->google2fa_secret);
         }
 
         return $google2FaUrl;
@@ -69,12 +70,23 @@ class Repository
      * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
      * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
      */
-    public function createSecretKey(): PasswordSecurity
+    public function createSecretKey(): TwoFactorAuthentication
     {
-        return PasswordSecurity::create([
+        return TwoFactorAuthentication::create([
             'user_id' => $this->getAuthenticatedUser()->id,
             'google2fa_secret' => $this->google2FaLayer()->generateSecretKey(),
-            'google2FA_enable' => 0,
+            'google2fa_recovery_tokens' => $this->recoveryRepository->generateTokens(),
+            'google2fa_enable' => 0,
         ]);
+    }
+
+    /**
+     * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
+     * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
+     * @throws \PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException
+     */
+    public function canEnable2Fa(User $user, string $verificationCode): bool
+    {
+        return $this->google2FaLayer()->verifyKey($user->twoFactorAuthentication->google2fa_secret, $verificationCode);
     }
 }

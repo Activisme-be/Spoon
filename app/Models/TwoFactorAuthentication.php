@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
-use App\Model;
-use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class PasswordSecurity
+ * Class TwoFactorAuthentication
  *
  * @package App\Models
  */
-class PasswordSecurity extends Model
+class TwoFactorAuthentication extends Model
 {
     protected $guarded = ['id'];
+
+    protected $casts = ['google2fa_recovery_tokens' => 'array'];
 
     /**
      * Data relation for the user that is attached to the password securities.

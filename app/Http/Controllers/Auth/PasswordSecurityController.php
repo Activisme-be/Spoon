@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\TwoFactorDisableRequest;
+use App\Notifications\Users\TwoFactor\DisabledNotification;
+use App\Notifications\Users\TwoFactor\EnabledNotification;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Class PasswordSecurityController.
+ * Class PasswordSecurityController
  *
- * @todo Refactoring the controller.
+ * @package App\Http\Controllers\Auth
  */
 class PasswordSecurityController extends Controller
 {
@@ -29,19 +31,12 @@ class PasswordSecurityController extends Controller
     {
         $route = redirect()->route('account.security');
 
-        try { // To generate the secret authenticator key.
+        try {
             $this->twoFactorAuthRepository->createSecretKey();
-
             return $route->with('success', 'De unieke 2FA sleutel is gegenereerd voor uw account. Verifieer de sleutel om 2FA te activeren.');
         } catch (IncompatibleWithGoogleAuthenticatorException $exception) {
-            // Return the user back with an error flash message.
-            // When the authenticator isn't compatible with google authenticator app.
-
             return $route->with('error', 'De authenticator app is niet compatible met Google Authenticator.');
         } catch (InvalidCharactersException $exception) {
-            // Return back with an error flash message.
-            // When the authenticator code has invalid characters.
-
             return $route->with('error', 'The authenticator code bevat invalide karakter.');
         }
     }
@@ -53,29 +48,25 @@ class PasswordSecurityController extends Controller
      */
     public function enable2fa(Request $request): RedirectResponse
     {
-        $repositoryLayer = $this->twoFactorAuthRepository;
-        $user = $repositoryLayer->getAuthenticatedUser();
-        $secret = $request->get('verify-code');
+        $user = $request->user();
 
-        if ($repositoryLayer->google2FaLayer()->verifyKey($user->passwordSecurity->google2fa_secret, $secret)) {
-            $user->passwordSecurity->update(['google2fa_enable' => true]);
+        if ($this->twoFactorAuthRepository->canEnable2Fa($user, $request->get('verify-code'))) {
+            $user->twoFactorAuthentication->update(['google2fa_enable' => true]);
+            $user->notify(new EnabledNotification($user->twoFactorAuthentication->google2fa_recovery_tokens));
 
-            return redirect()->route('account.security')->with('success', '2Fa is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
+            auth()->logout();
+            session()->flash('status', '2FA is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
+
+            return redirect()->route('account.security');
         }
 
         return redirect()->route('account.security')->with('error', 'Invalide verificatie code, Probeer het opnieuw!');
     }
 
-    public function disable2fa(Request $request): RedirectResponse
+    public function disable2fa(TwoFactorDisableRequest $request): RedirectResponse
     {
-        if (! Hash::check($request->get('current-password'), $request->user()->password)) {
-            return back()->with('error', 'Het gegeven wachtwoord klopt niet met uw huidige wachtwoord. Probeer het opnieuw.');
-        }
-
-        $validatedData = $request->validate(['current-password' => 'required']);
-
-        $request->user()->passwordSecurity->update(['google2fa_enable' => false]);
-        $request->user()->passwordSecurity->delete();
+        $request->user()->twoFactorAuthentication->delete();
+        $request->user()->notify(new DisabledNotification());
 
         return redirect()->route('account.security')->with('success', '2FA is gedeactiveerd.');
     }

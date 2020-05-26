@@ -14,11 +14,11 @@ class Authenticator extends BaseAuthenticator
 {
     protected function canPassWithoutCheckingOTP(): bool
     {
-        if (empty($this->getUser()->passwordSecurity)) {
+        if (empty($this->getUser()->twoFactorAuthentication)) {
             return true;
         }
 
-        return ! $this->getUser()->passwordSecurity->google2fa_enable
+        return ! $this->getUser()->twoFactorAuthentication->google2fa_enable
             || ! $this->isEnabled()
             || $this->noUserIsAuthenticated()
             || $this->twoFactorAuthStillValid();
@@ -36,12 +36,17 @@ class Authenticator extends BaseAuthenticator
      */
     protected function getGoogle2FASecretKey(): string
     {
-        $secret = $this->getUser()->passwordSecurity->{$this->config('otp_secret_column')};
+        $secret = $this->getUser()->twoFactorAuthentication->{$this->config('otp_secret_column')};
 
-        if ($secret === null || empty($secret)) {
+        if ($this->hasAuthenticationSecret($secret)) {
             throw new InvalidSecretKey('Secret key cannot be empty.');
         }
 
         return $secret;
+    }
+
+    public function hasAuthenticationSecret(?string $secret): ?String
+    {
+        return $secret === null || empty($secret);
     }
 }
