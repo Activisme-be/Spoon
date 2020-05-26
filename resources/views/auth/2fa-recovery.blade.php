@@ -29,9 +29,9 @@
 
                                     <input id="password" type="password" class="form-control {{ $errors->has('recovery_token') ? ' is-invalid' : '' }}" name="recovery_token" value="" required autofocus>
 
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('recovery_token') }}</strong>
-                                    </span>
+                                    @if ($errors->first('recovery_token'))
+                                        <span class="invalid-feedback">{{ $errors->first('recovery_token') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group no-margin">

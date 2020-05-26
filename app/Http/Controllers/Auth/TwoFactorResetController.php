@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\TwoFactorRecoveryRequest;
 use App\Notifications\TwoFactorResetNotification;
+use App\Notifications\Users\TwoFactor\DisabledNotification;
 use App\Repositories\TwoFactorAuth\Authenticator as AuthenticatorRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -44,10 +45,11 @@ class TwoFactorResetController extends Controller
 
         if ($this->authenticator->canDisplayRecoveryView()) {
             DB::transaction(static function () use ($user): void {
-                dd($user->twoFactorAuthentication->google2fa_recovery_tokens);
+                $user->twoFactorAuthentication->delete();
+                $user->notify(new DisabledNotification());
             });
         }
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
 }

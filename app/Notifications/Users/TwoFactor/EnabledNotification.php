@@ -31,6 +31,9 @@ class EnabledNotification extends Notification implements ShouldQueue
 
     public function toMail(User $notifiable): MailMessage
     {
-        return (new MailMessage())->markdown('email.enable-2fa', ['user' => $notifiable, 'tokens' => $this->twoFactorTokens]);
+        return (new MailMessage())
+            ->subject('2FA authenticatie is geactiveerd op uw account')
+            ->from(config('mail.from.address'), config('mail.from.name'))
+            ->markdown('email.enable-2fa', ['user' => $notifiable, 'tokens' => $this->twoFactorTokens]);
     }
 }

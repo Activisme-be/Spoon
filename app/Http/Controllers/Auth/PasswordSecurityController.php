@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\TwoFactorDisableRequest;
+use App\Notifications\Users\TwoFactor\DisabledNotification;
 use App\Notifications\Users\TwoFactor\EnabledNotification;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Http\Request;
@@ -52,9 +53,11 @@ class PasswordSecurityController extends Controller
         if ($this->twoFactorAuthRepository->canEnable2Fa($user, $request->get('verify-code'))) {
             $user->twoFactorAuthentication->update(['google2fa_enable' => true]);
             $user->notify(new EnabledNotification($user->twoFactorAuthentication->google2fa_recovery_tokens));
-            auth()->logout();
 
-            return redirect()->route('account.security')->with('success', '2Fa is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
+            auth()->logout();
+            session()->flash('status', '2FA is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
+
+            return redirect()->route('account.security');
         }
 
         return redirect()->route('account.security')->with('error', 'Invalide verificatie code, Probeer het opnieuw!');
@@ -63,6 +66,7 @@ class PasswordSecurityController extends Controller
     public function disable2fa(TwoFactorDisableRequest $request): RedirectResponse
     {
         $request->user()->twoFactorAuthentication->delete();
+        $request->user()->notify(new DisabledNotification());
 
         return redirect()->route('account.security')->with('success', '2FA is gedeactiveerd.');
     }
