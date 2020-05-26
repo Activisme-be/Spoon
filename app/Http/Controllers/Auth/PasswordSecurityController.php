@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\TwoFactorDisableRequest;
+use App\Notifications\Users\TwoFactor\EnabledNotification;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
-use App\Repositories\TwoFactorAuth\RecoveryRepository as TwoFactorRecoveryRepository;
 use Illuminate\Http\Request;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
@@ -19,12 +19,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class PasswordSecurityController extends Controller
 {
     private TwoFactorAuthRepository $twoFactorAuthRepository;
-    private TwoFactorRecoveryRepository $recoveryRepository;
 
     public function __construct(TwoFactorAuthRepository $twoFactorAuthRepository)
     {
         $this->middleware(['auth', '2fa', 'forbid-banned-user']);
-
         $this->twoFactorAuthRepository = $twoFactorAuthRepository;
     }
 
@@ -49,8 +47,12 @@ class PasswordSecurityController extends Controller
      */
     public function enable2fa(Request $request): RedirectResponse
     {
-        if ($this->twoFactorAuthRepository->canEnable2Fa($request->user(), $request->get('verify-code'))) {
-            $request->user()->twoFactorAuthentication->update(['google2fa_enable' => true]);
+        $user = $request->user();
+
+        if ($this->twoFactorAuthRepository->canEnable2Fa($user, $request->get('verify-code'))) {
+            $user->twoFactorAuthentication->update(['google2fa_enable' => true]);
+            $user->notify(new EnabledNotification($user->twoFactorAuthentication->google2fa_recovery_tokens));
+            auth()->logout();
 
             return redirect()->route('account.security')->with('success', '2Fa is geactiveerd! Ook hebben wij je recovery codes toegestuurd per mail.');
         }

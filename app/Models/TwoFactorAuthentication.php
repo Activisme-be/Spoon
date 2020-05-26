@@ -14,6 +14,8 @@ class TwoFactorAuthentication extends Model
 {
     protected $guarded = ['id'];
 
+    protected $casts = ['google2fa_recovery_tokens' => 'array'];
+
     /**
      * Data relation for the user that is attached to the password securities.
      */

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Users;
 
 use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
+use App\Rules\MatchRecoveryCode;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -19,7 +20,7 @@ class TwoFactorRecoveryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()->user()->passwordSecurity()->exists();
+        return auth()->check() && auth()->user()->twoFactorAuthentication()->exists();
     }
 
     /**
@@ -29,6 +30,6 @@ class TwoFactorRecoveryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return ['wachtwoord' => ['required', 'string', new MatchUserPassword($this->user())]];
+        return ['recovery_token' => ['required', 'string', new MatchRecoveryCode($this->user())]];
     }
 }

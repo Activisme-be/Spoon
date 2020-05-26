@@ -20,6 +20,6 @@ class RecoveryRepository
 
     public function generateTokens()
     {
-        // TODO
+        return $this->recovery->numeric()->setChars(10)->toArray();
     }
 }

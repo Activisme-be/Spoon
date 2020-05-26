@@ -18,10 +18,12 @@ use RuntimeException;
 class Repository
 {
     protected Guard $auth;
+    protected RecoveryRepository $recoveryRepository;
 
-    public function __construct(Guard $auth)
+    public function __construct(Guard $auth, RecoveryRepository $recoveryRepository)
     {
         $this->auth = $auth;
+        $this->recoveryRepository = $recoveryRepository;
     }
 
     /**
@@ -73,7 +75,8 @@ class Repository
         return TwoFactorAuthentication::create([
             'user_id' => $this->getAuthenticatedUser()->id,
             'google2fa_secret' => $this->google2FaLayer()->generateSecretKey(),
-            'google2FA_enable' => 0,
+            'google2fa_recovery_tokens' => $this->recoveryRepository->generateTokens(),
+            'google2fa_enable' => 0,
         ]);
     }
 

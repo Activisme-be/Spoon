@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Notifications\Users\TwoFactor;
+
+use App\Models\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+/**
+ * Class EnabledNotification
+ *
+ * @package App\Notifications\Users\TwoFactor
+ */
+class EnabledNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+
+    public array $twoFactorTokens;
+
+    public function __construct(array $twoFactorTokens)
+    {
+        $this->twoFactorTokens = $twoFactorTokens;
+    }
+
+    public function via()
+    {
+        return ['mail'];
+    }
+
+    public function toMail(User $notifiable): MailMessage
+    {
+        return (new MailMessage())->markdown('email.enable-2fa', ['user' => $notifiable, 'tokens' => $this->twoFactorTokens]);
+    }
+}
