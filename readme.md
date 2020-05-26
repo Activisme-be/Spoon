@@ -59,7 +59,7 @@ Zijn we blij als je het met ons deelt en of bereid bent om het uit te werken of 
 ### Framework sync
 
 Spoon word regelmatig bijgewerkt met veranderen in het Laravel framework. 
-De laatste synchronizatie is uitgevoerd op 27/04/2020. Met als laatste versie van de sync. laravel/laravel 7.6
+De laatste synchronizatie is uitgevoerd op 24/05/2020. Met als laatste versie van de sync. [laravel/laravel 7.12.0](https://github.com/laravel/laravel/compare/v7.6.0...v7.12.0)
 
 ### Licentie 
 Spoon en Laravel zijn vrijgegeven als open-source sofware onder de MIT licentie
