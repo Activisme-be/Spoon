@@ -47,7 +47,7 @@ class IndexController extends Controller
 
     public function create(Role $roles): Renderable
     {
-        $roles = $roles->pluck('name', 'name');
+        $roles = $roles->pluck('name', 'name')->toArray();
         return view('users.create', compact('roles'));
     }
 

@@ -207,12 +207,16 @@ body {
 }
 
 .nav-underline .nav-link:hover {
-  color: #007bff;
+    color: #5A67D8;
+}
+
+.icon-subnav {
+    color: #5A67D8;
 }
 
 .nav-underline .active {
-  font-weight: 500;
-  color: #343a40;
+    font-weight: 500;
+    color: #5A67D8;
 }
 
 .text-white-50 { color: rgba(255, 255, 255, .5); }
@@ -222,3 +226,38 @@ body {
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+
+// List groups
+.list-group-transparent .list-group-item {
+    border-left: 5px solid transparent;
+    border-right: 0;
+    border-bottom: 0;
+    border-top: 0;
+    background: none;
+    color: #4A5568;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    margin-bottom: .4rem;
+}
+
+.list-group-transparent .list-group-item:hover {
+    background: #fff;
+    border-left: 5px solid #5A67D8;;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.list-group-transparent .list-group-item.active {
+    border-left: 5px solid #5A67D8;;
+    background: #fff;
+    color: #4A5568;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+
+    .fe {
+        font-weight: bold;
+        color: #5A67D8;
+    }
+}
+
+.bg-navbar {
+    background-image: linear-gradient(#2c3e50, #34495e);
+}

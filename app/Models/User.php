@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Repositories\UserRepository;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\ActivityLog;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
@@ -17,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @package App\Models
  */
-class User extends UserRepository implements BannableContract
+class User extends Authenticatable implements BannableContract
 {
     use Notifiable;
     use Bannable;
@@ -45,12 +45,19 @@ class User extends UserRepository implements BannableContract
         $this->attributes['password'] = bcrypt($password);
     }
 
+    public function scopeSearch(Builder $query, string $searchTerm): Builder
+    {
+        return $query->where('voornaam', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('achternaam', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('email', 'LIKE', "%{$searchTerm}%");
+    }
+
     /**
      * Data relation for the 2FA password securities.
      */
-    public function passwordSecurity(): HasOne
+    public function twoFactorAuthentication(): HasOne
     {
-        return $this->hasOne(PasswordSecurity::class);
+        return $this->hasOne(TwoFactorAuthentication::class);
     }
 
     /**
