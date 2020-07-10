@@ -24,7 +24,7 @@ class DisabledNotification extends Notification implements ShouldQueue
 
     public function toMail(): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject('2FA is gedeactiveerd op uw account')
             ->from(config('mail.from.address'), config('mail.from.name'))
             ->markdown('email.disable-2fa');
