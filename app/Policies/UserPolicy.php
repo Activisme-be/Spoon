@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
+use App\Enums\UserRoles;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Lab404\Impersonate\Services\ImpersonateManager;
 
 /**
  * Class UserPolicy
@@ -62,7 +64,7 @@ class UserPolicy
 
     /**
      * Determine whether the authenticated user is the same than the given user.
-     *
+     *`
      * @param  User $user   Entity of the authenticated user.
      * @param  User $model  Entity of the given user.
      * @return bool
@@ -70,5 +72,24 @@ class UserPolicy
     public function sameUser(User $user, User $model): bool
     {
         return $user->is($model);
+    }
+
+    public function impersonate(User $user, User $model, ?string $guardName = null): bool
+    {
+        $impersonateManager = app()->make(ImpersonateManager::class);
+        $guardName = $guardName ?? $impersonateManager->getDefaultSessionGuard();
+
+        return $user->isNot($model)
+            && $user->hasRole(UserRoles::WEBMASTER)
+            && ($impersonateManager->getCurrentAuthGuardName() === $guardName)
+            && ! $impersonateManager->isImpersonating()
+            && $user->canImpersonate();
+    }
+
+    public function leaveImpersonate(User $user): bool
+    {
+        $impersonateManager = app()->make(ImpersonateManager::class);
+
+        return $user->hasRole(UserRoles::ADMIN) && $impersonateManager->isImpersonating();
     }
 }

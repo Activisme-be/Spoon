@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\PasswordSecurityController;
 use App\Http\Controllers\Auth\TwoFactorResetController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Users\AccountController;
+use App\Http\Controllers\Users\ImpersonateController;
 use Illuminate\Support\Facades\Route;
 
 /*

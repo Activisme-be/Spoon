@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Alerts\KioskController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Users\ImpersonateController;
 use App\Http\Controllers\Users\IndexController;
 use App\Http\Controllers\Users\LockController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('us
 Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
 Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
 Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');
+
+// User Impersonation routes
+Route::get('/gebruiker/{user}/aanmelden/{guardName?}', [ImpersonateController::class, 'take'])->name('users.impersonate');
+Route::get('/gebruiker/{user}/afmelden', [ImpersonateController::class, 'leave'])->name('users.impersonate.leave');
 
 // User state routes
 Route::get('/account/gedeactiveerd', [LockController::class, 'index'])->name('user.blocked');
