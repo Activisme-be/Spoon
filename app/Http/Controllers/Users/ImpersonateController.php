@@ -31,7 +31,7 @@ class ImpersonateController extends Controller
 
         if ($user->canBeImpersonated() && $this->impersonateManager->take($request->user(), $user, $guardName)) {
             $takeRedirect = $this->impersonateManager->getTakeRedirectTo();
-            // TODO: Implement Logging method.
+            $request->user()->logActivity($user, 'Gebruikers', 'Heeft een impersonatie sessie gestart voor ' . $user->name);
 
             if ($takeRedirect !== 'back') {
                 return redirect()->to($takeRedirect);
