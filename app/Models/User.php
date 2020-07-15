@@ -9,6 +9,7 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\Relations\hasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
+use Lab404\Impersonate\Models\Impersonate;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -24,6 +25,7 @@ class User extends Authenticatable implements BannableContract
     use HasRoles;
     use ActivityLog;
     use CausesActivity;
+    use Impersonate;
 
     protected $fillable = ['voornaam', 'on_kiosk', 'achternaam', 'email', 'password', 'last_login_at'];
     protected $hidden = ['password', 'remember_token'];

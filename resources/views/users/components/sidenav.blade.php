@@ -12,9 +12,15 @@
         <i class="fe fe-activity mr-1 text-secondary"></i> Activiteiten
     </a>
 
-    <a href="mailto: {{ $user->email }}" class="list-group-item list-group-item-action">
+    <a href="mailto:{{ $user->email }}" class="list-group-item list-group-item-action">
         <i class="fe fe-mail text-secondary mr-2"></i> E-mail persoon
     </a>
+
+    @if ($currentUser->can('impersonate', [$user]))
+        <a href="{{ route('users.impersonate', $user) }}" class="list-group-item list-group-item-action">
+            <i class="fe fe-log-in text-secondary mr-2"></i> Impersoneer gebruiker
+        </a>
+    @endif
 
     @if ($user->isBanned() && $currentUser->can('activate-user', $user))
         <a href="{{ route('users.unlock', $user) }}" class="list-group-item list-group-item-action">

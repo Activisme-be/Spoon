@@ -74,6 +74,12 @@
                                 <i class="fe fe-sliders mr-1 text-secondary"></i> Instellingen
                             </a>
 
+                            @impersonating
+                                <a class="dropdown-item" href="{{ route('users.impersonate.leave', $currentUser) }}">
+                                    <i class="text-muted fe fe-log-out mr-1"></i> Verlaat impersonatie
+                                </a>
+                            @endImpersonating
+
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fe text-danger mr-1 fe-power"></i> Afmelden
                             </a>
