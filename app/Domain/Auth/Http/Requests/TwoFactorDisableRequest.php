@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Domain\Auth\Http\Requests;
 
 use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
 use Illuminate\Foundation\Http\FormRequest;

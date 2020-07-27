@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domain\Announcements\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\NotificationsRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;

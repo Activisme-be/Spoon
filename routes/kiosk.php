@@ -1,7 +1,7 @@
 <?php
 
 use App\Domain\Activity\Http\Controllers\ActivityController;
-use App\Http\Controllers\Alerts\KioskController;
+use App\Domain\Announcements\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\HomeController;
 use App\Domain\Auth\Http\Controllers\ImpersonateController;
 use App\Domain\Auth\Http\Controllers\UserController;
@@ -41,10 +41,10 @@ Route::get('/{userEntity}/activeer', [LockController::class, 'destroy'])->name('
 Route::post('/{userEntity}/deactiveer', [LockController::class, 'store'])->name('users.lock.store');
 
 // System alert routes
-Route::get('/alerts', [KioskController::class, 'create'])->name('alerts.index');
-Route::get('/alerts/overzicht', [KioskController::class, 'index'])->name('alerts.overview');
-Route::get('/alerts/{notification}', [KioskController::class, 'show'])->name('alerts.show');
-Route::post('/alerts', [KioskController::class, 'store'])->name('alerts.store');
+Route::get('/alerts', [AnnouncementController::class, 'create'])->name('alerts.index');
+Route::get('/alerts/overzicht', [AnnouncementController::class, 'index'])->name('alerts.overview');
+Route::get('/alerts/{notification}', [AnnouncementController::class, 'show'])->name('alerts.show');
+Route::post('/alerts', [AnnouncementController::class, 'store'])->name('alerts.store');
 
 // Audit routes
 Route::get('/audit', [ActivityController::class, 'index'])->name('audit.overview');

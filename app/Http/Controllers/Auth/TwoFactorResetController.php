@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\TwoFactorRecoveryRequest;
-use App\Notifications\TwoFactorResetNotification;
+use App\Domain\Auth\Http\Requests\TwoFactorRecoveryRequest;
 use App\Notifications\Users\TwoFactor\DisabledNotification;
 use App\Repositories\TwoFactorAuth\Authenticator as AuthenticatorRepository;
 use Illuminate\Contracts\Support\Renderable;

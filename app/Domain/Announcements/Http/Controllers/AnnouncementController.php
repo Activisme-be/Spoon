@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Alerts;
+namespace App\Domain\Announcements\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Alerts\SystemNotificationRequest;
+use App\Domain\Announcements\Http\Requests\SystemNotificationRequest;
 use App\Models\SystemAlert;
 use App\Repositories\NotificationsRepository;
 use Illuminate\Contracts\Support\Renderable;
@@ -14,7 +14,7 @@ use Illuminate\Http\RedirectResponse;
  *
  * @package App\Http\Controllers\Alerts
  */
-class KioskController extends Controller
+class AnnouncementController extends Controller
 {
     protected NotificationsRepository $notifications;
 

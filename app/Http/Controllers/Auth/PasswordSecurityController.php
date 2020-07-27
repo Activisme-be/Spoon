@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\TwoFactorDisableRequest;
+use App\Domain\Auth\Http\Requests\TwoFactorDisableRequest;
 use App\Notifications\Users\TwoFactor\DisabledNotification;
 use App\Notifications\Users\TwoFactor\EnabledNotification;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
