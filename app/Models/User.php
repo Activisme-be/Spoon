@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Traits\ActivityLog;
+use App\Support\Database\Eloquent\Traits\ActivityLog;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\Relations\hasOne;

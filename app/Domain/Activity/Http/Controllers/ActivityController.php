@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domain\Activity\Http\Controllers;
 
-use App\Exports\AuditLogsExport;
+use App\Domain\Activity\Exports\AuditLogsExport;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;

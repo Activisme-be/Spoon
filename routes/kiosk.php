@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
+use App\Domain\Activity\Http\Controllers\ActivityController;
 use App\Http\Controllers\Alerts\KioskController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Users\ImpersonateController;
-use App\Http\Controllers\Users\IndexController;
-use App\Http\Controllers\Users\LockController;
+use App\Domain\Auth\Http\Controllers\ImpersonateController;
+use App\Domain\Auth\Http\Controllers\UserController;
+use App\Domain\Auth\Http\Controllers\LockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/kiosk', [HomeController::class, 'kiosk'])->name('kiosk.dashboard');
 
 // User routes
-Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [IndexController::class, 'destroy'])->name('users.destroy');
-Route::get('/gebruikers/zoek', [IndexController::class, 'search'])->name('users.search');
-Route::get('/gebruiker/{user}', [IndexController::class, 'show'])->name('users.show');
-Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('users.update');
-Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
-Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
-Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');
+Route::match(['get', 'delete'], '/verwijder/gebruiker/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/gebruikers/zoek', [UserController::class, 'search'])->name('users.search');
+Route::get('/gebruiker/{user}', [UserController::class, 'show'])->name('users.show');
+Route::patch('/gebruikers/{user}', [UserController::class, 'update'])->name('users.update');
+Route::get('/gebruikers/nieuw', [UserController::class, 'create'])->name('users.create');
+Route::post('/gebruikers/nieuw', [UserController::class, 'store'])->name('users.store');
+Route::get('/gebruikers/{filter?}', [UserController::class, 'index'])->name('users.index');
 
 // User Impersonation routes
 Route::get('/gebruiker/{user}/aanmelden/{guardName?}', [ImpersonateController::class, 'take'])->name('users.impersonate');
@@ -50,3 +50,4 @@ Route::post('/alerts', [KioskController::class, 'store'])->name('alerts.store');
 Route::get('/audit', [ActivityController::class, 'index'])->name('audit.overview');
 Route::get('/audit/zoeken', [ActivityController::class, 'search'])->name('audit.search');
 Route::get('/audit/export/{filter?}', [ActivityController::class, 'export'])->name('audit.export');
+Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');

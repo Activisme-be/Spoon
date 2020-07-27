@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Model;
+use App\Support\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

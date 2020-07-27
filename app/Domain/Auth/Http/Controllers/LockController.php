@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\LockValidator;
+use App\Domain\Auth\Http\Requests\LockValidator;
 use App\Models\User;
 use App\Notifications\Users\LockNotification;
 use Illuminate\Contracts\Support\Renderable;

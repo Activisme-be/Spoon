@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Listeners\LogSuccessfulLogin;
+use App\Domain\Auth\Listeners\LogSuccessfulLogin;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

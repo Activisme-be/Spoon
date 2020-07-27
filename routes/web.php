@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Auth\PasswordSecurityController;
 use App\Http\Controllers\Auth\TwoFactorResetController;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\Users\AccountController;
-use App\Http\Controllers\Users\ImpersonateController;
+use App\Domain\Auth\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/home', 'HomeController@index')->name('home');
-
-// Activity routes
-Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');

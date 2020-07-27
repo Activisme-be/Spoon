@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\InformationValidator;
-use App\Http\Requests\Users\SecurityValidator;
+use App\Domain\Auth\Http\Requests\InformationValidator;
+use App\Domain\Auth\Http\Requests\SecurityValidator;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;

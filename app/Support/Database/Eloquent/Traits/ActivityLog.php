@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Support\Database\Eloquent\Traits;
 
 /**
  * Trait activityLog logging all the internal handlings from users in the application.

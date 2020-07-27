@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\InformationValidator;
+use App\Domain\Auth\Http\Requests\InformationValidator;
 use App\Models\User;
 use App\Notifications\LoginCreated;
-use Gate;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
@@ -20,7 +20,7 @@ use Spatie\Permission\Models\Role;
  *
  * @package App\Http\Controllers\Users
  */
-class IndexController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {

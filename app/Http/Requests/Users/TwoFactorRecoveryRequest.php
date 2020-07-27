@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Users;
 
 use ActivismeBe\ValidationRules\Rules\MatchUserPassword;
-use App\Rules\MatchRecoveryCode;
+use App\Domain\Auth\Rules\MatchRecoveryCode;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

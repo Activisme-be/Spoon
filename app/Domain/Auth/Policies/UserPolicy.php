@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Domain\Auth\Policies;
 
 use App\Enums\UserRoles;
 use App\Models\User;
