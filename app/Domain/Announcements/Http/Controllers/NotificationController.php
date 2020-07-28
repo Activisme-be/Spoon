@@ -3,7 +3,7 @@
 namespace App\Domain\Announcements\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\NotificationsRepository;
+use App\Domain\Announcements\Repositories\NotificationsRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Notifications\DatabaseNotification;

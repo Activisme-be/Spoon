@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Domain\Auth\Http\Requests\TwoFactorDisableRequest;
-use App\Notifications\Users\TwoFactor\DisabledNotification;
-use App\Notifications\Users\TwoFactor\EnabledNotification;
+use App\Domain\Auth\Notifications\TwoFactor\DisabledNotification;
+use App\Domain\Auth\Notifications\TwoFactor\EnabledNotification;
 use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Http\Request;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;

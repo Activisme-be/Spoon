@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Domain\Announcements\Repositories;
 
 use App\Models\SystemAlert;
 use App\Models\User;
-use App\Notifications\SystemAlert as AlertNotification;
+use App\Domain\Announcements\Notifications\SystemAlert as AlertNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

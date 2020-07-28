@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Domain\Auth\Http\Requests\TwoFactorRecoveryRequest;
-use App\Notifications\Users\TwoFactor\DisabledNotification;
+use App\Domain\Auth\Notifications\TwoFactor\DisabledNotification;
 use App\Repositories\TwoFactorAuth\Authenticator as AuthenticatorRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Exceptions\InvalidSignatureException;
 use Illuminate\Support\Facades\DB;
 
 /**

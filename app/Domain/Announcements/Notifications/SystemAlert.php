@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Domain\Announcements\Notifications;
 
 use App\Models\SystemAlert as Alert;
 use App\Models\User;

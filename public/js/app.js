@@ -37291,7 +37291,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Tjoosten/Documents/spoon-actb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Tjoosten/Documents/activisme_BE/spoon/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })

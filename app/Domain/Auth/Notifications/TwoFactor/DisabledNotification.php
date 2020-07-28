@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\Users\TwoFactor;
+namespace App\Domain\Auth\Notifications\TwoFactor;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;

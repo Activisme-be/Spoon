@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\PasswordSecurityController;
-use App\Http\Controllers\Auth\TwoFactorResetController;
+use App\Domain\Auth\Http\Controllers\PasswordSecurityController;
+use App\Domain\Auth\Http\Controllers\TwoFactorResetController;
 use App\Domain\Announcements\Http\Controllers\NotificationController;
 use App\Domain\Auth\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;

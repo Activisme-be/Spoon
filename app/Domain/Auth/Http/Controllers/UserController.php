@@ -5,7 +5,7 @@ namespace App\Domain\Auth\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Domain\Auth\Http\Requests\InformationValidator;
 use App\Models\User;
-use App\Notifications\LoginCreated;
+use App\Domain\Auth\Notifications\LoginCreated;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
