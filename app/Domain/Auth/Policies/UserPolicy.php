@@ -2,8 +2,8 @@
 
 namespace App\Domain\Auth\Policies;
 
-use App\Enums\UserRoles;
-use App\Models\User;
+use App\Domain\Auth\Enums\UserRoles;
+use App\Domain\Auth\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Lab404\Impersonate\Services\ImpersonateManager;
 

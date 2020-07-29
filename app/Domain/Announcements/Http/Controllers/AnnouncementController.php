@@ -4,7 +4,7 @@ namespace App\Domain\Announcements\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Domain\Announcements\Http\Requests\SystemNotificationRequest;
-use App\Models\SystemAlert;
+use App\Domain\Announcements\Models\SystemAlert;
 use App\Domain\Announcements\Repositories\NotificationsRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;

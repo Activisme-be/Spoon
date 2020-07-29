@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Domain\Auth\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Class User
  *
- * @package App\Models
+ * @package App\Domain\Auth\Models
  */
 class User extends Authenticatable implements BannableContract
 {

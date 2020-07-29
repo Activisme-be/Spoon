@@ -3,7 +3,7 @@
 namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Domain\Auth\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Lab404\Impersonate\Services\ImpersonateManager;

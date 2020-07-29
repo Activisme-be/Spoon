@@ -4,7 +4,7 @@ namespace App\Domain\Activity\Http\Controllers;
 
 use App\Domain\Activity\Exports\AuditLogsExport;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Domain\Auth\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;

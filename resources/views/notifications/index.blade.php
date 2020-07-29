@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        /** @var \App\Models\User $currentUser */
+        /** @var \App\Domain\Auth\Models\User $currentUser */
         /** @var \Illuminate\Notifications\DatabaseNotification[]&\Illuminate\Pagination\Paginator $notifications */
     @endphp
 

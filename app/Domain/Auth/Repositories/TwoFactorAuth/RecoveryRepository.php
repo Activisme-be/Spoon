@@ -18,7 +18,7 @@ class RecoveryRepository
         $this->recovery = $recovery;
     }
 
-    public function generateTokens()
+    public function generateTokens(): array
     {
         return $this->recovery->numeric()->setChars(10)->toArray();
     }

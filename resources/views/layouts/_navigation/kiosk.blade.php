@@ -1,5 +1,5 @@
 @php
-    /** @var \App\Models\User $currentUser */
+    /** @var \App\Domain\Auth\Models\User $currentUser */
 @endphp
 
 <a class="nav-link {{ active('kiosk.dashboard') }}" href="{{ route('kiosk.dashboard') }}">

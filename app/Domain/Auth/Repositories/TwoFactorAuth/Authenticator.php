@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\TwoFactorAuth;
+namespace App\Domain\Auth\Repositories\TwoFactorAuth;
 
 use PragmaRX\Google2FALaravel\Exceptions\InvalidSecretKey;
 use PragmaRX\Google2FALaravel\Support\Authenticator as BaseAuthenticator;

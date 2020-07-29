@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Domain\Auth\Http\Requests\TwoFactorDisableRequest;
 use App\Domain\Auth\Notifications\TwoFactor\DisabledNotification;
 use App\Domain\Auth\Notifications\TwoFactor\EnabledNotification;
-use App\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
+use App\Domain\Auth\Repositories\TwoFactorAuth\Repository as TwoFactorAuthRepository;
 use Illuminate\Http\Request;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;

@@ -4,7 +4,7 @@ namespace App\Domain\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Domain\Auth\Http\Requests\LockValidator;
-use App\Models\User;
+use App\SDomain\Auth\Models\User;
 use App\Domain\Auth\Notifications\LockNotification;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;

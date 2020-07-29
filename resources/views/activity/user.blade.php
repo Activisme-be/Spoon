@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        /** @var \App\Models\User $user */
+        /** @var \App\Domain\Auth\Models\User $user */
         /** @var Spatie\Activitylog\Models\Activity[]&\Illuminate\Pagination\Paginator $activities */
     @endphp
 

@@ -2,8 +2,8 @@
 
 @section('content')
     @php
-        /** @var \App\Models\User $currentUser */
-        /** @var \App\Models\User $user */
+        /** @var \App\Domain\Auth\Models\User $currentUser */
+        /** @var \App\Domain\Auth\Models\User $user */
         /** @var \Spatie\Permission\Models\Role[] $roles */
     @endphp
 

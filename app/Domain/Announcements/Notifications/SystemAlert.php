@@ -2,8 +2,8 @@
 
 namespace App\Domain\Announcements\Notifications;
 
-use App\Models\SystemAlert as Alert;
-use App\Models\User;
+use App\Domain\Announcements\Models\SystemAlert as Alert;
+use App\Domain\Auth\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;

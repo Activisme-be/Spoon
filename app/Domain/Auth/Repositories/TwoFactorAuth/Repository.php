@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Repositories\TwoFactorAuth;
+namespace App\Domain\Auth\Repositories\TwoFactorAuth;
 
-use App\Models\TwoFactorAuthentication;
-use App\Models\User;
+use App\Domain\Auth\Models\TwoFactorAuthentication;
+use App\Domain\Auth\Models\User;
+use App\Repositories\TwoFactorAuth\RecoveryRepository;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Response;

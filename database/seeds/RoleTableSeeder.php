@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\UserRoles;
+use App\Domain\Auth\Enums\UserRoles;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 

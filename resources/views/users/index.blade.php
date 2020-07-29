@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        /** @var \App\Models\User[]&Illuminate\Pagination\Paginator $users */
+        /** @var \App\Domain\Auth\Models\User[]&Illuminate\Pagination\Paginator $users */
     @endphp
 
     <div class="container-fluid py-3">

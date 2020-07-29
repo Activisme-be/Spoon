@@ -2,7 +2,7 @@
 
 namespace App\Domain\Auth\Rules;
 
-use App\Models\User;
+use App\Domain\Auth\Models\User;
 use Illuminate\Contracts\Validation\Rule;
 
 /**

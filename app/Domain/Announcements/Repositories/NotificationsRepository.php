@@ -2,8 +2,8 @@
 
 namespace App\Domain\Announcements\Repositories;
 
-use App\Models\SystemAlert;
-use App\Models\User;
+use App\Domain\Announcements\Models\SystemAlert;
+use App\Domain\Auth\Models\User;
 use App\Domain\Announcements\Notifications\SystemAlert as AlertNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

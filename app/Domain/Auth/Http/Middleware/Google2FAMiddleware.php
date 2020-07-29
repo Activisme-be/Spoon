@@ -2,7 +2,7 @@
 
 namespace App\Domain\Auth\Http\Middleware;
 
-use App\Repositories\TwoFactorAuth\Authenticator;
+use App\Domain\Auth\Repositories\TwoFactorAuth\Authenticator;
 use Closure;
 
 /**
