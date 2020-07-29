@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SystemAlert;
+use App\Domain\Announcements\Models\SystemAlert;
 use Illuminate\Contracts\Support\Renderable;
 use Spatie\Activitylog\Models\Activity;
 

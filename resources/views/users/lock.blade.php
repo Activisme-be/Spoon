@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        /** @var \App\Models\User $userEntity */
+        /** @var \App\Domain\Auth\Models\User $userEntity */
     @endphp
 
     <div class="container-fluid py-3">

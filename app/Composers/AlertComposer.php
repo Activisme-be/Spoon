@@ -2,7 +2,7 @@
 
 namespace App\Composers;
 
-use App\Models\SystemAlert;
+use App\Domain\Announcements\Models\SystemAlert;
 use Illuminate\View\View;
 
 /**

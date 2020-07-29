@@ -1,6 +1,6 @@
 @php
-    /** @var \App\Models\User $currentUser */
-    /** @var \App\Models\User $user */
+    /** @var \App\Domain\Auth\Models\User $currentUser */
+    /** @var \App\Domain\Auth\Models\User $user */
 @endphp
 
 <div class="list-group mb-3 list-group-transparent">

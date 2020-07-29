@@ -1,7 +1,7 @@
 <?php
 
-use App\Enums\UserRoles;
-use App\Models\User;
+use App\Domain\Auth\Enums\UserRoles;
+use App\Domain\Auth\Models\User;
 use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Database\Seeder;

@@ -37350,9 +37350,9 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Tjoosten/Documents/spoon-actb/resources/js/auth.js */"./resources/js/auth.js");
-__webpack_require__(/*! /Users/Tjoosten/Documents/spoon-actb/resources/sass/auth.scss */"./resources/sass/auth.scss");
-module.exports = __webpack_require__(/*! /Users/Tjoosten/Documents/spoon-actb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Tjoosten/Documents/activisme_BE/spoon/resources/js/auth.js */"./resources/js/auth.js");
+__webpack_require__(/*! /Users/Tjoosten/Documents/activisme_BE/spoon/resources/sass/auth.scss */"./resources/sass/auth.scss");
+module.exports = __webpack_require__(/*! /Users/Tjoosten/Documents/activisme_BE/spoon/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,5 +1,5 @@
 @php
-    /** @var \App\Models\User $currentUser */
+    /** @var \App\Domain\Auth\Models\User $currentUser */
 @endphp
 
 @if (empty($currentUser->twoFactorAuthentication))

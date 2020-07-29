@@ -39,7 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\Session\Middleware\AuthenticateSession::class,
-            \App\Http\Middleware\LogLastUserActivity::class,
+            \App\Domain\Auth\Http\Middleware\LogLastUserActivity::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -59,19 +59,19 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' =>  \App\Http\Middleware\Authenticate::class,
+        'auth' =>  \App\Domain\Auth\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Domain\Auth\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role'       => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        'forbid-banned-user' => \App\Http\Middleware\ForbidBannedUser::class,
-        '2fa' => \App\Http\Middleware\Google2FAMiddleware::class,
-        'portal' => \App\Http\Middleware\PortalMiddleware::class,
+        'forbid-banned-user' => \App\Domain\Auth\Http\Middleware\ForbidBannedUser::class,
+        '2fa' => \App\Domain\Auth\Http\Middleware\Google2FAMiddleware::class,
+        'portal' => \App\Domain\Auth\Http\Middleware\PortalMiddleware::class,
     ];
 }
