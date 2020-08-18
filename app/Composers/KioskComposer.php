@@ -31,7 +31,7 @@ class KioskComposer
     {
         return DB::table('activity_log')
             ->selectRaw('count(*) as total')
-            ->selectRaw("count(case when created_at like '%".date('Y-m-d')."%' then 1 end) as total_today")
+            ->selectRaw("count(case when created_at like CURDATE() then 1 end) as total_today")
             ->first();
     }
 
@@ -42,7 +42,7 @@ class KioskComposer
     {
         return DB::table('system_alerts')
             ->selectRaw('count(*) as total')
-            ->selectRaw("count(case when created_at like '%".date('Y-m-d')."%' then 1 end) as total_today")
+            ->selectRaw("count(case when created_at like CURDATE() then 1 end) as total_today")
             ->first();
     }
 
