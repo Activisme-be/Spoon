@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/coverage
 /.php_cs.cache
 .env
 .env.backup
